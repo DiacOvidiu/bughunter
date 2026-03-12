@@ -1,0 +1,109 @@
+---
+title: "Ce face un QA Engineer în 2026"
+seoTitle: "Ce face un QA Engineer în 2026: rol, skill-uri, impact | BugHunter"
+description: "Rolul QA în 2026: responsabilități reale, skill-uri, automation cu sens și colaborare. Ghid practic pentru România."
+date: "2026-03-12"
+category: "Career în QA"
+tags: ["quality engineering", "carieră", "skill-uri", "test strategy"]
+author:
+  name: "Echipa BugHunter"
+  role: "Comunitate QA • România"
+internalLinks:
+  - href: "/blog/qa-manual-vs-automation-testing"
+    label: "QA Manual vs Automation Testing"
+  - href: "/blog/ce-inseamna-quality-engineering-in-echipele-moderne"
+    label: "Ce înseamnă Quality Engineering"
+  - href: "/resurse#strategie"
+    label: "Template: strategie pe risc"
+faq:
+  - question: "Mai are sens QA Manual în 2026?"
+    answer: "Da. Exploratory testing, test design și comunicarea riscului sunt competențe de bază. Automation completează, nu înlocuiește gândirea."
+  - question: "Ce trebuie să știu ca să fiu „future-ready” în QA?"
+    answer: "HTTP și API basics, test design, observabilitate, un tool de automation, plus comunicare și colaborare. Restul vine din practică și feedback."
+  - question: "Automation e obligatoriu pentru un QA Engineer?"
+    answer: "Nu în toate rolurile, dar devine un avantaj clar. Important e să înțelegi când merită automatizat și cum menții testele stabile."
+---
+
+În 2026, QA-ul nu mai înseamnă „executăm test case-uri” și raportăm bug-uri la final. QA-ul modern înseamnă **reducerea riscului**, **accelerarea feedback-ului** și **calitate ca sistem**: testabilitate, observabilitate, procese și colaborare în echipă.
+
+## Rolul a evoluat: de la execuție la sistem
+
+Un QA Engineer bun influențează calitatea înainte să apară bug-urile:
+
+- pune întrebările potrivite despre risc și impact
+- clarifică criterii de acceptare și edge cases
+- ajută la design-ul testabilității (log-uri, events, feature flags, test data)
+- alege mixul corect manual vs automation în funcție de ROI și stabilitate
+
+Ideea-cheie: **calitatea e o proprietate a sistemului**, nu doar a unei persoane.
+
+## Responsabilități care contează în proiecte reale
+
+### 1) Exploratory testing cu scop
+
+Explorarea nu e „dau click”. E un proces: ipoteze, charters, observare, notițe, reproducere și concluzii. În 2026, exploratory testing rămâne una dintre cele mai bune surse de defecte reale, mai ales pe:
+
+- flows noi
+- UX și consistență
+- integrarea cu terți (plăți, SSO, analytics)
+- edge cases și regresii „subtile”
+
+### 2) Bug reports care accelerează fix-ul
+
+Un bug report bun e un artefact de colaborare:
+
+- pași de reproducere clari
+- așteptat vs obținut
+- impact și severitate explicată
+- evidence: capturi, log-uri, request/response (anonimizate)
+- „ipoteze” (ce crezi că se întâmplă) fără a acuza
+
+### 3) Test strategy orientată pe risc
+
+Strategia nu e un document lung. E un acord de echipă:
+
+- ce risc prioritar reducem
+- ce acoperim prin checks automate vs explorare
+- unde vrem feedback rapid (PR, staging, prod)
+
+Pentru un template pragmatic: vezi [Template: strategie pe risc](/resurse#strategie).
+
+## Skill-uri: tehnic + comunicare + influență
+
+### Tehnic (minimum viabil)
+
+- HTTP basics, REST, auth (token, scopes), status codes
+- API testing (manual + automatizat)
+- un tool de UI automation (Playwright/Cypress/Selenium) + stabilitate (flaky tests)
+- test data + environment management
+- observabilitate: log-uri, tracing, metrics, correlation IDs
+
+### Comunicare (diferențiatorul real)
+
+QA-ul are impact când comunică bine:
+
+- explică riscul fără panică și fără blame
+- negociază trade-offs (time vs coverage vs impact)
+- traduce tehnicul în limbaj de business când e nevoie
+
+## Ce înseamnă „Quality Engineering” și de ce apare peste tot
+
+Quality Engineering pune accent pe **prevenție** și **feedback loops**, nu doar pe „detectare”. Dacă vrei perspectiva completă, citește și [Ce înseamnă Quality Engineering](/blog/ce-inseamna-quality-engineering-in-echipele-moderne).
+
+## Plan simplu pentru următoarele 30 de zile
+
+1. Alege un proiect demo și definește 3 riscuri mari.
+2. Scrie 5 charters de exploratory testing și rulează-le.
+3. Creează 10 API checks pentru endpoint-uri critice (inclusiv negative tests).
+4. Automatizează 1 flow stabil (smoke) și fă-l să nu fie flakey.
+5. Cere feedback pe Discord.
+
+## FAQ
+
+Întrebările frecvente sunt în panelul din dreapta, împreună cu răspunsuri scurte și la obiect.
+
+## Următorul pas: intră pe Discord
+
+Dacă vrei feedback pe cazul tău (stack, nivel, obiectiv), intră pe Discord și deschide un thread. Cu context, primești răspunsuri mai bune și mai rapide.
+
+[Intră pe Discord](/comunitate)

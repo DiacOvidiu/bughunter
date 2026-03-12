@@ -1,0 +1,95 @@
+---
+title: "Ghid de testare pentru aplicații web moderne"
+seoTitle: "Ghid de testare web modernă: risc, observabilitate, automation | BugHunter"
+description: "Framework practic pentru testarea aplicațiilor web moderne: risc, flows critice, observabilitate, API checks și automation stabil."
+date: "2026-03-12"
+category: "QA Manual"
+tags: ["web testing", "strategie", "observabilitate", "automation", "performance"]
+author:
+  name: "Echipa BugHunter"
+  role: "Comunitate QA • România"
+internalLinks:
+  - href: "/blog/qa-manual-vs-automation-testing"
+    label: "Manual vs Automation"
+  - href: "/resurse#strategie"
+    label: "Template: strategie pe risc"
+  - href: "/resurse#api"
+    label: "Checklist: API testing"
+faq:
+  - question: "Ce automatizez într-o aplicație web?"
+    answer: "Smoke pe flows critice stabile și API checks pentru endpoint-uri core. Restul rămâne explorare orientată pe risc."
+  - question: "Cum prioritizez testarea când am timp puțin?"
+    answer: "Începe cu flows care lovesc direct business-ul, apoi cu zonele care se schimbă des. Folosește observabilitate pentru semnale rapide."
+---
+
+Aplicațiile web moderne sunt rapide, complexe și pline de dependențe: feature flags, third-party services, analytics, caching, edge, microfrontends. Dacă testezi „ca în 2016”, ratezi exact problemele care costă cel mai mult.
+
+## Pasul 1: definește riscul înainte să definești testele
+
+Întrebări rapide:
+
+- Ce flow generează bani sau încredere?
+- Ce se schimbă des (risc de regresie)?
+- Ce e greu de detectat târziu?
+- Ce e costisitor în producție?
+
+Strategia bună pornește de aici, nu de la „câte test case-uri avem”.
+
+## Pasul 2: modelează flows, nu pagini
+
+În web, defectele apar des între pagini: state, session, caching, permissions. Testează flows:
+
+- autenticare + permisiuni
+- checkout / plăți / confirmări
+- căutare + filtrare + rezultate
+- onboarding / upgrade / anulare
+
+## Pasul 3: observabilitate = superputere
+
+Un QA care folosește observabilitate are avantaj enorm:
+
+- correlation IDs în bug report
+- log-uri relevante (anonimizate)
+- trace pentru request-uri lente
+- metrics pentru rate de erori
+
+Observabilitatea reduce „nu pot reproduce” și accelerează debugging-ul.
+
+## Pasul 4: API checks înainte de UI regression
+
+UI testing e scump și flakey dacă nu e gândit bine. În multe cazuri, API checks îți dau:
+
+- feedback mai rapid
+- semnal mai stabil
+- acoperire bună pentru logică
+
+Folosește [Checklist: API testing](/resurse#api) ca punct de pornire.
+
+## Pasul 5: automation cu sens (și stabil)
+
+Recomandare pragmatică:
+
+1. smoke suite mică, stabilă (1–3 flows)
+2. API checks pentru endpoint-uri core
+3. contract checks unde se schimbă schema des
+4. UI regression doar pentru scenarii stabile
+
+Pentru un cadru complet: [Manual vs Automation](/blog/qa-manual-vs-automation-testing).
+
+## Pasul 6: performance și accesibilitate (nu la final)
+
+În 2026, perf și a11y nu sunt „nice to have”. Sunt calitate:
+
+- LCP, CLS, INP
+- degradare controlată când serviciile externe au probleme
+- navigare cu tastatura și semnale clare pentru screen readers
+
+## FAQ
+
+Întrebările frecvente sunt în secțiunea dedicată.
+
+## CTA: intră pe Discord
+
+Ai un produs concret și vrei un plan de testare pe risc? Intră pe Discord cu context (flow, stack, constrângeri) și primești un playbook scurt.
+
+[Intră pe Discord](/comunitate)

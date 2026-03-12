@@ -1,0 +1,115 @@
+---
+title: "QA Manual vs Automation Testing"
+seoTitle: "QA Manual vs Automation Testing: cum alegi focusul corect | BugHunter"
+description: "Framework practic pentru mixul manual/automation: risc, ROI, stabilitate, ce automatizezi și ce lași explorare."
+date: "2026-03-12"
+category: "Best Practices"
+tags: ["automation", "manual testing", "ROI", "stabilitate", "playwright", "cypress"]
+author:
+  name: "Echipa BugHunter"
+  role: "Comunitate QA • România"
+internalLinks:
+  - href: "/blog/ghid-de-testare-pentru-aplicatii-web-moderne"
+    label: "Ghid de testare pentru aplicații web moderne"
+  - href: "/blog/cele-mai-utile-tool-uri-pentru-testare-api"
+    label: "Tool-uri utile pentru API testing"
+  - href: "/resurse#strategie"
+    label: "Template: strategie pe risc"
+faq:
+  - question: "Ce aleg dacă sunt junior?"
+    answer: "Începe cu manual: mindset, explorare, bug reporting. Apoi adaugă automation treptat, cu un flow stabil."
+  - question: "Cum reduc flaky tests?"
+    answer: "Selectors robust, waits explicite, control pe test data, izolare, retries doar unde are sens și observabilitate."
+  - question: "Automation înlocuiește QA Manual?"
+    answer: "Nu. Automation acoperă checks repetitive. Manualul (explorare) găsește probleme noi și validează experiența."
+---
+
+Discuția „manual vs automation” e adesea greșită. Nu e o competiție, ci un **mix optim** pe risc și ROI. În multe echipe, calitatea scade nu pentru că lipsește automation, ci pentru că:
+
+- se automatizează scenarii instabile
+- se ignoră explorarea și observabilitatea
+- se măsoară volum (număr de teste), nu impact
+
+## Începe cu o întrebare simplă: ce risc reducem?
+
+Înainte de tool-uri, definește:
+
+- ce flows sunt critice (business)
+- ce zone se schimbă des (risc de regresie)
+- ce e greu de detectat târziu (cost)
+
+Apoi decide: manual, automation sau ambele.
+
+## Când manualul e alegerea corectă
+
+Manualul e excelent când vrei să descoperi lucruri noi:
+
+- feature nou / design nou
+- explorare pe edge cases
+- UX, accesibilitate, consistență
+- integrare cu terți (plăți, SSO)
+- bug hunts bazate pe ipoteze
+
+Manualul bun nu e „dau click”. E charter + notițe + concluzii.
+
+## Când automation îți dă leverage
+
+Automation merită când reduce timpul de feedback și crește încrederea:
+
+- smoke suite stabilă
+- regresii critice
+- checks pe API (contract, auth, negative testing)
+- checks pe date (migrări, validări)
+
+### Un criteriu practic: frecvență × stabilitate × impact
+
+Un test automat bun are:
+
+- **frecvență** mare (rulezi des)
+- **stabilitate** (flaky ≈ cost)
+- **impact** (prinde defecte cu adevărat scumpe)
+
+## Ce automatizezi într-o aplicație web modernă (ordine recomandată)
+
+1. Smoke pe flows critice (1–3)
+2. API checks pentru endpoint-uri core
+3. Contract checks unde ai multiple servicii
+4. UI regression doar pentru scenarii stabile, cu selectors buni
+
+Pentru context complet: [Ghid de testare pentru aplicații web moderne](/blog/ghid-de-testare-pentru-aplicatii-web-moderne).
+
+## De ce apar flaky tests (și ce faci)
+
+Flaky tests apar din:
+
+- selectors fragili
+- timing și waits implicite
+- test data instabilă
+- dependințe externe necontrolate
+
+Remedii:
+
+- selectors „by role / by label” unde se poate
+- test data predictibilă
+- izolarea dependențelor (mocks) doar când e justificat
+- log-uri și screenshot/video doar pentru debugging (nu pentru fiecare run)
+
+## Un model simplu de strategie
+
+Strategia bună explică:
+
+- ce acoperim automat
+- ce explorăm manual
+- unde avem feedback rapid
+
+Poți folosi [Template: strategie pe risc](/resurse#strategie).
+
+## FAQ
+
+Întrebările frecvente sunt în pagina articolului, împreună cu răspunsuri scurte.
+
+## CTA: intră pe Discord
+
+Dacă vrei să decizi mixul pentru proiectul tău, intră pe Discord și spune: produs, nivel, risc major și ce tool-uri folosiți. Îți dăm un plan scurt, realist.
+
+[Intră pe Discord](/comunitate)

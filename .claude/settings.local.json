@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"C:\\\\Ovi\\\\site-uri web\\\\bughunters\\\\bughunters\" && npm run typecheck 2>&1 | tail -30)",
+      "Bash(cd \"C:\\\\Ovi\\\\site-uri web\\\\bughunters\\\\bughunters\" && npm run typecheck 2>&1 | tail -20)",
+      "WebSearch",
+      "WebFetch(domain:playwright.dev)",
+      "WebFetch(domain:www.cypress.io)",
+      "WebFetch(domain:www.testrail.com)",
+      "WebFetch(domain:qase.io)",
+      "WebFetch(domain:www.browserstack.com)",
+      "WebFetch(domain:www.katalon.com)",
+      "WebFetch(domain:mabl.com)"
+    ]
+  }
+}

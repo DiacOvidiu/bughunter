@@ -1,0 +1,88 @@
+---
+title: "Ce înseamnă Quality Engineering în echipele moderne"
+seoTitle: "Quality Engineering: ce înseamnă și cum arată în practică | BugHunter"
+description: "Quality Engineering înseamnă prevenție și feedback loops. Vezi cum se aplică: testabilitate, observabilitate, risc și ownership."
+date: "2026-03-12"
+category: "Best Practices"
+tags: ["quality engineering", "strategie", "observabilitate", "proces", "ownership"]
+author:
+  name: "Echipa BugHunter"
+  role: "Comunitate QA • România"
+internalLinks:
+  - href: "/blog/ce-face-un-qa-engineer-in-2026"
+    label: "Ce face un QA Engineer în 2026"
+  - href: "/resurse#strategie"
+    label: "Template: strategie pe risc"
+  - href: "/comunitate"
+    label: "Discord: discuții avansate"
+faq:
+  - question: "Quality Engineering înseamnă că QA devine developer?"
+    answer: "Nu. Înseamnă că QA contribuie la sistemul de calitate: testabilitate, feedback, risc, procese. Programarea e doar o parte posibilă."
+  - question: "Cum încep într-o echipă care nu are această cultură?"
+    answer: "Începe mic: un checklist pe risc, un playbook de bug reports, un set mic de checks stabile. Arată impact și extinde gradual."
+---
+
+„Quality Engineering” apare tot mai des pentru că descrie o realitate: calitatea nu se obține doar prin testare la final. Se obține prin **design**, **feedback loops**, **observabilitate** și **ownership** în echipă.
+
+## De la „testare” la „sistem”
+
+Testarea e o activitate. Calitatea e o proprietate a sistemului. Quality Engineering urmărește:
+
+- prevenție (testabilitate, design decisions)
+- detectare rapidă (checks, monitoring)
+- învățare (postmortems, trends)
+
+## Testabilitate: dacă nu poți observa, nu poți controla
+
+Testabilitatea în practică:
+
+- log-uri utile și corelate (correlation IDs)
+- feature flags pentru control și rollbacks
+- test data management
+- contracte clare între servicii
+
+Fără asta, QA „ghicește” din UI, iar debugging-ul devine lent.
+
+## Risc: limbajul comun între QA, dev și business
+
+Un framework simplu:
+
+- impact (cât costă dacă se strică?)
+- probabilitate (cât de des se întâmplă?)
+- detectabilitate (cât de repede aflăm?)
+
+Strategia bună nu e lungă. E clară și conectată la risc. Poți folosi [Template: strategie pe risc](/resurse#strategie).
+
+## Automation: checks, nu „scripturi”
+
+Automation-ul care ajută are scop:
+
+- smoke suite stabilă
+- checks pe API și contract
+- semnale rapide în CI/CD
+
+Automation-ul care nu ajută:
+
+- volum mare de UI tests flakey
+- lipsă de ownership și mentenanță
+
+## Maturitate: ce arată o echipă „QE-ready”
+
+Semnale:
+
+- bug reports reproductibile și orientate pe impact
+- observabilitate accesibilă pentru debugging
+- release process cu gates inteligente
+- comunicare clară a riscului și trade-offs
+
+Pentru un overview al rolului: [Ce face un QA Engineer în 2026](/blog/ce-face-un-qa-engineer-in-2026).
+
+## FAQ
+
+Întrebările frecvente sunt în secțiunea dedicată.
+
+## CTA: intră pe Discord
+
+Vrei să introduci Quality Engineering în echipa ta? Intră pe Discord și descrie contextul: mărimea echipei, proces, problemele principale. Îți dăm un plan incremental.
+
+[Intră pe Discord](/comunitate)

@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import {
   Bug,
   CalendarDays,
@@ -23,6 +26,8 @@ const nav = [
 ];
 
 export function SiteHeader() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <header className="sticky top-0 z-50 border-b border-border/40 bg-background/75 backdrop-blur-2xl">
       {/* Thin gradient accent line at very top */}
@@ -77,40 +82,49 @@ export function SiteHeader() {
         </div>
 
         {/* Mobile menu */}
-        <details className="group relative lg:hidden">
-          <summary className="cursor-pointer list-none rounded-xl bg-card px-4 py-2 text-sm font-semibold ring-1 ring-border shadow-(--shadow) transition-colors hover:bg-card-2">
-            Meniu
-          </summary>
-          <div
-            className={cn(
-              "absolute right-0 mt-3 w-[min(93vw,380px)] rounded-2xl bg-background-2 p-3",
-              "ring-1 ring-border shadow-(--shadow)",
-            )}
+        <div className="relative lg:hidden">
+          <button
+            onClick={() => setMenuOpen((o) => !o)}
+            className="cursor-pointer rounded-xl bg-card px-4 py-2 text-sm font-semibold ring-1 ring-border shadow-(--shadow) transition-colors hover:bg-card-2"
+            aria-expanded={menuOpen}
+            aria-label="Meniu navigare"
           >
-            <div className="flex flex-col gap-1">
-              {nav.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-foreground transition-colors hover:bg-card-2"
-                >
-                  <item.icon className="size-4 text-primary/70" aria-hidden />
-                  {item.label}
-                </Link>
-              ))}
-              <div className="mt-2 border-t border-border pt-3">
-                <ButtonLink
-                  href={siteConfig.discordInviteUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-full justify-center"
-                >
-                  Intră pe Discord
-                </ButtonLink>
+            Meniu
+          </button>
+          {menuOpen && (
+            <div
+              className={cn(
+                "absolute right-0 mt-3 w-[min(93vw,380px)] rounded-2xl bg-background-2 p-3",
+                "ring-1 ring-border shadow-(--shadow)",
+              )}
+            >
+              <div className="flex flex-col gap-1">
+                {nav.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-foreground transition-colors hover:bg-card-2"
+                  >
+                    <item.icon className="size-4 text-primary/70" aria-hidden />
+                    {item.label}
+                  </Link>
+                ))}
+                <div className="mt-2 border-t border-border pt-3">
+                  <ButtonLink
+                    href={siteConfig.discordInviteUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => setMenuOpen(false)}
+                    className="w-full justify-center"
+                  >
+                    Intră pe Discord
+                  </ButtonLink>
+                </div>
               </div>
             </div>
-          </div>
-        </details>
+          )}
+        </div>
       </div>
     </header>
   );

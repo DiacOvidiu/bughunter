@@ -50,6 +50,8 @@ export async function generateMetadata({
     title: post.meta.seoTitle ?? `${post.meta.title} — ${siteConfig.name}`,
     description: post.meta.description,
     path: `/blog/${post.slug}`,
+    ogType: "article",
+    keywords: post.meta.tags?.length ? post.meta.tags : undefined,
   });
 }
 
@@ -97,6 +99,7 @@ export default async function BlogPostPage({
               title:
                 post.meta.seoTitle ?? `${post.meta.title} — ${siteConfig.name}`,
               description: post.meta.description,
+              speakableCssSelectors: ["h1", "h2", ".prose > p"],
             })}
           />
           <JsonLdScript
@@ -113,6 +116,8 @@ export default async function BlogPostPage({
               description: post.meta.description,
               datePublished: post.meta.date,
               authorName: post.meta.author?.name ?? siteConfig.name,
+              tags: post.meta.tags,
+              category: post.meta.category,
             })}
           />
           {post.meta.faq.length ? (

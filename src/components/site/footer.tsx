@@ -110,6 +110,16 @@ export function SiteFooter() {
             © {new Date().getFullYear()} {siteConfig.name}.
             <br />
             Toate drepturile rezervate.
+            <br />
+            Dezvoltat de{" "}
+            <a
+              href="https://www.diacovidiu.ro/"
+              target="_blank"
+              rel="noreferrer"
+              className="underline hover:text-muted transition-colors"
+            >
+              diacovidiu.ro
+            </a>
           </p>
         </div>
       </Container>

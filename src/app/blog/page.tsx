@@ -9,7 +9,7 @@ import { ButtonLink } from "@/components/ui/button";
 import { JsonLdScript } from "@/components/seo/jsonld";
 import { getAllBlogPosts, blogCategories } from "@/lib/content/blog";
 import { formatDateShort } from "@/lib/format";
-import { breadcrumbListJsonLd, webPageJsonLd } from "@/lib/jsonld";
+import { blogCollectionJsonLd, breadcrumbListJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
@@ -26,6 +26,7 @@ export default async function BlogIndexPage() {
   const rest = posts.slice(1);
   return (
     <>
+      <JsonLdScript data={blogCollectionJsonLd()} />
       <JsonLdScript
         data={webPageJsonLd({
           path: "/blog",

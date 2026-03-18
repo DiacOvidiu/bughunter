@@ -2,7 +2,6 @@ import { ArrowRight, Handshake, Mail, Mic2 } from "lucide-react";
 
 import { DiscordCTABlock } from "@/components/blocks/discord-cta";
 import { Container } from "@/components/layout/container";
-import { SectionHeader } from "@/components/layout/section";
 import { Button, ButtonLink } from "@/components/ui/button";
 import { Input, Textarea } from "@/components/ui/field";
 import { JsonLdScript } from "@/components/seo/jsonld";
@@ -68,11 +67,18 @@ export default async function ContactPage({
         <Container className="relative max-w-7xl">
           <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
             <div>
-              <SectionHeader
-                eyebrow="Contact / Parteneriate"
-                title="Hai să construim ceva util pentru QA în România"
-                description="Parteneriate, speaker invitations, workshop-uri și colaborări editoriale. Trimite un mesaj sau intră pe Discord."
-              />
+              <div className="flex justify-center lg:justify-start">
+                <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs font-semibold text-foreground/80 shadow-(--shadow)">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary-2 animate-glow" />
+                  Contact / Parteneriate
+                </span>
+              </div>
+              <h1 className="mt-8 text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">
+                Hai să construim ceva util pentru QA în România
+              </h1>
+              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
+                Parteneriate, speaker invitations, workshop-uri și colaborări editoriale. Trimite un mesaj sau intră pe Discord.
+              </p>
               <div className="mt-8 grid gap-3">
                 {[
                   {

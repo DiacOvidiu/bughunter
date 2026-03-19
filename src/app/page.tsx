@@ -92,9 +92,9 @@ const testimonials = [
 
 const faq = [
   {
-    question: "Este BugHunter doar pentru testeri manuali?",
+    question: "Este BugHunter doar pentru testare manuală?",
     answer:
-      "Nu. Comunitatea e pentru manual, automation, API, performance, security, quality engineering și roluri adiacente. Structura pe canale te ajută să găsești rapid subiectele relevante.",
+      "Nu. Comunitatea e deschisă pentru testare manuală, automatizare, API, performance, security, quality engineering și roluri adiacente. Structura pe canale te ajută să găsești rapid subiectele relevante.",
   },
   {
     question: "Pot intra dacă sunt la început și nu am job în QA?",
@@ -234,9 +234,9 @@ export default async function HomePage() {
               </h1>
 
               <p className="mt-7 max-w-lg text-lg leading-relaxed text-muted">
-                Un spațiu modern pentru testeri manuali și automati, QA
-                engineers și SDETs. Întrebări tehnice cu context, resurse curate
-                și networking real.
+                Un spațiu pentru ingineri în testare și toți cei care se ocupă
+                cu calitatea software-ului. Discuții tehnice cu context, resurse
+                curate și conexiuni reale din industrie.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -288,7 +288,7 @@ export default async function HomePage() {
                     "#qa-manual-problems și #qa-automation-problems — ajutor tehnic real",
                     "#interviu și #jobs — prep interviuri și oportunități de angajare",
                     "#istqb și #ai-enthusiasm — certificări și AI în testare",
-                    "#success-stories, #bughunting și #meme-land — comunitate vie",
+                    "#success-stories, #bughunting și #meme-land — povești din meserie și umor de QA",
                   ].map((t) => (
                     <li key={t} className="flex items-start gap-2.5">
                       <CheckCircle2
@@ -303,12 +303,11 @@ export default async function HomePage() {
                 <div className="mt-6 rounded-xl bg-background-2 p-4 ring-1 ring-border">
                   <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.18em] text-primary/80">
                     <Zap className="size-3" aria-hidden />
-                    Rapid start
+                    Primii pași
                   </div>
                   <p className="mt-2 text-sm leading-relaxed text-muted">
-                    Intră, alege rolurile, citește regulile, pune prima
-                    întrebare cu context. Primești răspunsuri mai bune, mai
-                    repede.
+                    Intri, alegi rolurile, citești regulile, pui prima întrebare
+                    cu context. Primești răspunsuri mai bune, mai repede.
                   </p>
                 </div>
 
@@ -334,8 +333,8 @@ export default async function HomePage() {
         <Container className="max-w-7xl">
           <SectionHeader
             eyebrow="Ce înveți"
-            title="Tot ce contează în QA modern, sub un acoperiș"
-            description="Canale structurate pe discipline, nu dezordine generală. Găsești rapid ceea ce cauți."
+            title="Tot ce contează în QA, într-un singur loc"
+            description="Canale organizate pe discipline. Nu cauți prin zeci de mesaje — găsești direct ce îți trebuie."
           />
 
           {/* 4 carduri egale */}
@@ -437,15 +436,15 @@ export default async function HomePage() {
               {
                 icon: BookOpen,
                 num: "02",
-                title: "Knowledge sharing constant",
-                text: "Sesiuni scurte, workshop-uri și thread-uri evergreen. Cunoștințele bune rămân, nu se pierd în scroll.",
+                title: "Cunoștințe care se transmit",
+                text: "Sesiuni scurte, workshop-uri și subiecte care rămân de referință. Ce e util nu se pierde în scroll.",
                 color: "from-cyan-600/25 to-blue-600/15",
               },
               {
                 icon: Compass,
                 num: "03",
                 title: "Carieră: junior → senior",
-                text: "Roadmap-uri, portofoliu, interviuri și dezvoltare pe competențe: tehnic + comunicare + systems thinking.",
+                text: "Roadmap-uri, portofoliu, interviuri și creștere pe competențe: tehnic, comunicare și gândire sistemică.",
                 color: "from-violet-600/25 to-pink-600/15",
               },
             ].map((f) => (
@@ -520,8 +519,8 @@ export default async function HomePage() {
             <div>
               <SectionHeader
                 eyebrow="Newsletter"
-                title="Update-uri utile, nu notificări"
-                description="Anunțăm evenimentele, articolele și resursele noi. Scopul: să nu ratezi ce e important."
+                title="Noutăți utile, nu spam"
+                description="Anunțăm evenimentele, articolele și resursele noi — ca să nu ratezi ce merită citit."
               />
               <div className="mt-8">
                 <NewsletterForm />
@@ -538,8 +537,8 @@ export default async function HomePage() {
         <Container className="max-w-7xl">
           <SectionHeader
             eyebrow="Articole"
-            title="Conținut editorial premium despre QA"
-            description="Scris pentru România, la standarde globale: structură, exemple, SEO și CTA spre comunitate."
+            title="Articole despre QA scrise pentru practică"
+            description="Nu teorie generală — subiecte concrete, cu exemple din proiecte reale și link spre comunitate."
           />
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {posts.map((p) => (
@@ -570,8 +569,8 @@ export default async function HomePage() {
         <Container className="max-w-7xl">
           <SectionHeader
             eyebrow="Resurse"
-            title="Ghiduri și toolkits pentru QA modern"
-            description="Start cu un roadmap solid sau aprofundează: API testing, performance, mobile, security, strategy."
+            title="Ghiduri și resurse practice pentru testare"
+            description="Începe cu un roadmap clar sau aprofundează: API testing, performance, mobile, security, strategie."
           />
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {highlightedResources.map((r) => (
@@ -599,9 +598,9 @@ export default async function HomePage() {
       <Section>
         <Container className="max-w-7xl">
           <SectionHeader
-            eyebrow="Social proof"
+            eyebrow="Ce spun membrii"
             title="O comunitate care îți respectă timpul"
-            description="Feedback real, discuții curate și standarde. Asta creează progres."
+            description="Oameni care răspund cu exemple, nu cu opinii. Asta face diferența."
             align="center"
           />
           <div className="mt-12">
@@ -620,7 +619,7 @@ export default async function HomePage() {
               <SectionHeader
                 eyebrow="FAQ"
                 title="Întrebări frecvente"
-                description="Clarificări rapide ca să intri pe Discord fără fricțiune."
+                description="Răspunsuri la ce te-ar putea opri înainte să intri."
               />
               <div className="mt-8">
                 <FaqAccordion items={faq} />

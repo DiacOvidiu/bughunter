@@ -59,12 +59,12 @@ const channels = [
 const rules = [
   {
     title: "Respect față de toți membrii",
-    text: "Toți sunt tratați cu respect, indiferent de rol sau nivel de experiență. Zero gatekeeping.",
+    text: "Toți sunt tratați cu respect, indiferent de rol sau nivel de experiență. Fără ierarhii artificiale.",
     icon: Users,
   },
   {
     title: "Fără spam",
-    text: "Evită mesajele repetate în rafală sau mesajele nesolicitate private. Keep it clean.",
+    text: "Evită mesajele repetate în rafală sau mesajele nesolicitate private. Păstrează conversațiile curate.",
     icon: Sparkles,
   },
   {
@@ -88,7 +88,7 @@ const faq = [
   {
     question: "Există mentorat?",
     answer:
-      "Da, în format pragmatic: feedback pe portofoliu, review de CV, direcții de învățare și sesiuni tematice. Nu promitem „mentor 1 la 1” pentru toți, dar facilităm ajutor real.",
+      "Da: feedback pe portofoliu, ajutor cu CV-ul, direcții clare de învățare și sesiuni tematice. Nu promitem mentorat individual pentru toți, dar ajutor real găsești.",
   },
   {
     question: "Ce face BugHunter diferit față de alte comunități?",
@@ -238,8 +238,8 @@ export default function CommunityPage() {
         <Container className="max-w-7xl">
           <SectionHeader
             eyebrow="Cum funcționează"
-            title="Un flow simplu, optimizat pentru răspunsuri bune"
-            description="Dacă pui întrebarea corect, comunitatea răspunde mai rapid și mai util."
+            title="Cum funcționează, pas cu pas"
+            description="Dacă pui întrebarea cu context, primești un răspuns util. E simplu, dar face toată diferența."
           />
           <div className="mt-10 grid gap-3 lg:grid-cols-4">
             {[
@@ -260,8 +260,8 @@ export default function CommunityPage() {
               },
               {
                 step: "04",
-                title: "Evergreen",
-                text: "Concluzia rămâne: thread, resursă, articol.",
+                title: "Rămâne",
+                text: "Concluzia nu se pierde — devine resursă, articol sau referință pentru alții.",
               },
             ].map((s) => (
               <Card key={s.step} className="p-7">
@@ -315,7 +315,7 @@ export default function CommunityPage() {
               <SectionHeader
                 eyebrow="FAQ"
                 title="Întrebări frecvente despre Discord"
-                description="Reducem fricțiunea: intri, te orientezi, începi."
+                description="Intri, te orientezi, pui prima întrebare. Atât."
               />
               <div className="mt-8">
                 <FaqAccordion items={faq} />

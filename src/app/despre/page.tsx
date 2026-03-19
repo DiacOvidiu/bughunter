@@ -82,8 +82,9 @@ export default function AboutPage() {
                 BugHunter există pentru a ridica standardul QA în România
               </h1>
               <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
-                Nu construim doar un server de Discord. Construim un loc unde
-                practici, întrebi și contribui fără zgomot și fără gatekeeping.
+                Nu e un simplu server de Discord. Intri, pui o întrebare reală
+                și primești un răspuns de la cineva care a trecut prin aceeași
+                situație. Fără să te simți judecat pentru ce nu știi.
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <ButtonLink
@@ -159,7 +160,7 @@ export default function AboutPage() {
           <SectionHeader
             eyebrow="Fundament"
             title="De ce există BugHunter"
-            description="Trei piloni care definesc identitatea comunității."
+            description="De unde am plecat, ce vrem să facem și ce s-a schimbat deja."
           />
           <div className="mt-10 grid gap-3 lg:grid-cols-3">
             {[
@@ -168,21 +169,21 @@ export default function AboutPage() {
                 Icon: BookOpen,
                 color: "text-indigo-400 bg-indigo-500/15",
                 title: "Poveste",
-                text: "BugHunter a pornit dintr-o problemă simplă: QA-ul se învață greu când ești singur. În proiecte reale ai risc, deadline și mult context. Comunitatea completează golul: feedback, exemple, claritate și oameni care au trecut prin aceleași situații.",
+                text: "BugHunter a pornit dintr-o problemă simplă: QA-ul e greu de învățat singur. În proiecte reale ai risc, deadline și mult context. Comunitatea aduce ce lipsea: oameni care au trecut prin aceleași situații și vor să ajute.",
               },
               {
                 num: "02",
                 Icon: Target,
                 color: "text-violet-400 bg-violet-500/15",
                 title: "Misiune",
-                text: "Să facem QA-ul mai matur: de la „executăm test case-uri” la quality engineering, sisteme, risc, observabilitate și colaborare. BugHunter e un accelerator de învățare și un hub de networking pentru oamenii de calitate.",
+                text: "Să facem QA-ul mai matur: de la executat teste la înțelegerea riscului, a sistemelor și a impactului real. BugHunter e locul unde oamenii din QA se ajută unii pe alții să crească.",
               },
               {
                 num: "03",
                 Icon: TrendingUp,
                 color: "text-cyan-400 bg-cyan-500/15",
                 title: "Impact",
-                text: "Pe termen lung, vrem ca BugHunter să fie referința pentru QA Testing în România: conținut editorial premium, evenimente utile, resurse curate și o comunitate care produce profesioniști mai buni.",
+                text: "Pe termen lung, vrem ca BugHunter să fie primul loc la care te gândești când ai o întrebare despre QA în România. Conținut care ajută, evenimente utile și oameni care dau mai departe ce știu.",
               },
             ].map((c) => (
               <Card key={c.title} className="p-7">
@@ -214,7 +215,7 @@ export default function AboutPage() {
           <SectionHeader
             eyebrow="Valori"
             title="Principii care țin comunitatea sănătoasă"
-            description="Sunt reguli de produs, nu doar de moderare."
+            description="Nu e o listă de interdicții — e felul în care vrem să funcționeze comunitatea."
           />
           <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[
@@ -228,7 +229,7 @@ export default function AboutPage() {
                 Icon: Users,
                 color: "text-indigo-400 bg-indigo-500/15",
                 title: "Respect",
-                text: "Zero gatekeeping. Zero toxicitate. Feedback direct, dar empatic.",
+                text: "Fără ierarhii artificiale. Zero toxicitate. Feedback direct, dar empatic.",
               },
               {
                 Icon: Code2,
@@ -246,7 +247,7 @@ export default function AboutPage() {
                 Icon: GitMerge,
                 color: "text-cyan-400 bg-cyan-500/15",
                 title: "Calitate ca sistem",
-                text: "Nu doar testare. Observabilitate, procese, risc, colaborare și ownership.",
+                text: "Nu doar testare. Observabilitate, procese, risc, colaborare și responsabilitate față de produs.",
               },
               {
                 Icon: Share2,
@@ -289,7 +290,7 @@ export default function AboutPage() {
                   "bg-emerald-500/15 text-emerald-400 ring-1 ring-emerald-500/25",
                 Icon: GraduationCap,
                 iconBg: "bg-emerald-500/15 text-emerald-400",
-                title: "Junior / Career switch",
+                title: "Junior / Schimbare de carieră",
                 text: "Onboarding, roadmap, practică ghidată, feedback pe portofoliu și interviuri.",
                 channels: ["#onboarding", "#qa-manual-problems", "#interviu"],
               },
@@ -300,7 +301,7 @@ export default function AboutPage() {
                 Icon: Code2,
                 iconBg: "bg-indigo-500/15 text-indigo-400",
                 title: "Mid / Senior",
-                text: "Discuții avansate: strategie, arhitectură de test, pipeline-uri, observabilitate, quality coaching.",
+                text: "Discuții avansate: strategie, arhitectură de test, pipeline-uri, observabilitate și mentorat tehnic.",
                 channels: [
                   "#qa-automation-problems",
                   "#ai-enthusiasm",
@@ -313,8 +314,8 @@ export default function AboutPage() {
                   "bg-violet-500/15 text-violet-400 ring-1 ring-violet-500/25",
                 Icon: Target,
                 iconBg: "bg-violet-500/15 text-violet-400",
-                title: "Leads / Managers",
-                text: "Calitate ca sistem: metrici, proces, standarde, org design, cultură și influență.",
+                title: "Leads / Manageri",
+                text: "Calitate ca sistem: metrici, proces, standarde, structura echipelor, cultură și influență.",
                 channels: ["#jobs", "#notes-resources", "#about-me"],
               },
             ].map((p) => (

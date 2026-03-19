@@ -109,7 +109,7 @@ const faq = [
   {
     question: "Ce tip de evenimente organizați?",
     answer:
-      "Meetup-uri, workshop-uri hands-on, sesiuni live pe Discord, AMA cu invitați, study groups și prezentări scurte pe subiecte practice (API, automation, test strategy, perf).",
+      "Meetup-uri, workshop-uri practice, sesiuni live pe Discord, Q&A cu invitați și prezentări scurte pe subiecte concrete (API, automation, strategie de testare, performanță).",
   },
 ];
 
@@ -125,7 +125,7 @@ const bentoCards = [
   {
     icon: Terminal,
     title: "#qa-automation-problems",
-    desc: "Playwright, Cypress, Selenium. Probleme de scripting, CI/CD, flaky tests — cu soluții din cod real.",
+    desc: "Playwright, Cypress, Selenium. Probleme de scripting, CI/CD, teste instabile — cu soluții din cod real.",
     accent: "from-indigo-500/20 via-violet-500/10 to-transparent",
     iconBg: "from-indigo-600/30 to-violet-600/20",
   },
@@ -139,7 +139,7 @@ const bentoCards = [
   {
     icon: Sparkles,
     title: "#interviu, #jobs & #linkedin",
-    desc: "Mock interviews, feedback pe CV, oportunități de job și conexiuni profesionale reale.",
+    desc: "Simulări de interviuri, feedback pe CV, oportunități de job și conexiuni profesionale reale.",
     accent: "from-emerald-500/20 via-teal-500/10 to-transparent",
     iconBg: "from-emerald-600/30 to-teal-600/20",
   },
@@ -286,7 +286,7 @@ export default async function HomePage() {
                 <ul className="mt-5 grid gap-3.5 text-sm text-muted">
                   {[
                     "#qa-manual-problems și #qa-automation-problems — ajutor tehnic real",
-                    "#interviu și #jobs — prep interviuri și oportunități de angajare",
+                    "#interviu și #jobs — pregătire pentru interviuri și oportunități de angajare",
                     "#istqb și #ai-enthusiasm — certificări și AI în testare",
                     "#success-stories, #bughunting și #meme-land — povești din meserie și umor de QA",
                   ].map((t) => (

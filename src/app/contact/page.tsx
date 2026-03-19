@@ -91,7 +91,7 @@ export default async function ContactPage({
                     title: "Speakers & workshop-uri",
                     Icon: Mic2,
                     color: "text-violet-400 bg-violet-500/15",
-                    text: "Invitații la evenimente, sesiuni live, AMA și workshop-uri hands-on.",
+                    text: "Invitații la evenimente, sesiuni live, Q&A și workshop-uri practice.",
                   },
                   {
                     title: "Contact direct",

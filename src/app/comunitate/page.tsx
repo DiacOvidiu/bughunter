@@ -44,7 +44,7 @@ const channels = [
   },
   {
     name: "qa-automation-problems",
-    desc: "Playwright/Cypress/Selenium — CI/CD, flaky, debugging.",
+    desc: "Playwright/Cypress/Selenium — CI/CD, teste instabile, depanare.",
   },
   {
     name: "interviu",
@@ -178,7 +178,7 @@ export default function CommunityPage() {
                   },
                   {
                     title: "Sesiuni LOUNGE live",
-                    text: "O dată la 2 săptămâni pe canalul vocal — interviuri, salarii, best practices, situații reale.",
+                    text: "O dată la 2 săptămâni pe canalul vocal — interviuri, salarii, bune practici, situații reale.",
                   },
                 ].map((b) => (
                   <Card key={b.title} className="p-7">

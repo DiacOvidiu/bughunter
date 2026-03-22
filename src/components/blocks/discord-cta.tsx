@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/site";
 
 export function DiscordCTABlock({
   title = "Intră pe Discord și cunoaște oameni care chiar testează",
-  description = "Întrebări, feedback, resurse, job talk și sesiuni live. Un loc pentru QA din România, construit pe practică și respect.",
+  description = "Comunitate activă din 2022. Întrebări, feedback, resurse, job talk și sesiuni live. Un loc pentru QA din România, construit pe practică și respect.",
 }: {
   title?: string;
   description?: string;
@@ -46,10 +46,6 @@ export function DiscordCTABlock({
           {/* Content */}
           <div className="relative grid gap-10 lg:grid-cols-[1.5fr_0.5fr] lg:items-center">
             <div>
-              <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold text-white/80 ring-1 ring-white/15">
-                <MessageSquare className="size-3.5" aria-hidden />
-                Canalul principal al comunității
-              </span>
               <h2 className="mt-5 text-2xl font-black tracking-tight text-white sm:text-3xl lg:text-4xl lg:leading-tight">
                 {title}
               </h2>

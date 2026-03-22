@@ -1,22 +1,13 @@
 import {
   ArrowRight,
-  BookOpen,
-  Bug,
   CheckCircle2,
   ChevronRight,
-  Compass,
-  GraduationCap,
-  MessagesSquare,
-  Sparkles,
-  Terminal,
-  Users,
   Zap,
 } from "lucide-react";
 
 import { DiscordCTABlock } from "@/components/blocks/discord-cta";
 import { FaqAccordion } from "@/components/blocks/faq";
 import { NewsletterForm } from "@/components/blocks/newsletter";
-import { StatsGrid } from "@/components/blocks/stats";
 import { TestimonialsGrid } from "@/components/blocks/testimonials";
 import { BlogCard } from "@/components/cards/blog-card";
 import { EventCard } from "@/components/cards/event-card";
@@ -46,29 +37,6 @@ export const metadata = buildMetadata({
   path: "/",
 });
 
-const stats = [
-  {
-    label: "Membri în comunitate",
-    value: "250+",
-    hint: "Din octombrie 2022, creștem constant",
-  },
-  {
-    label: "Sesiuni live / lună",
-    value: "~2",
-    hint: "Pe canalul vocal LOUNGE, o dată la 2 săptămâni",
-  },
-  {
-    label: "Canale active",
-    value: "20+",
-    hint: "manual, automation, interviu, jobs, istqb, AI",
-  },
-  {
-    label: "Comunitate activă din",
-    value: "2022",
-    hint: "Fondată în octombrie 2022",
-  },
-];
-
 const testimonials = [
   {
     quote:
@@ -92,56 +60,19 @@ const testimonials = [
 
 const faq = [
   {
-    question: "Este BugHunter doar pentru testare manuală?",
+    question: "Ce trebuie să fac imediat după ce intru?",
     answer:
-      "Nu. Comunitatea e deschisă pentru testare manuală, automatizare, API, performance, security, quality engineering și roluri adiacente. Structura pe canale te ajută să găsești rapid subiectele relevante.",
+      "Intră în #onboarding, alege rolurile, citește regulile și postează o scurtă prezentare în #general. Apoi poți deschide un thread cu prima întrebare în canalul potrivit.",
   },
   {
-    question: "Pot intra dacă sunt la început și nu am job în QA?",
+    question: "Există mentorat?",
     answer:
-      "Da. Avem onboarding, resurse, întrebări ghidate și sesiuni care te ajută să construiești bazele: mindset, practică, tool-uri, portofoliu, interviuri.",
+      "Da: feedback pe portofoliu, ajutor cu CV-ul, direcții clare de învățare și sesiuni tematice. Nu promitem mentorat individual pentru toți, dar ajutor real găsești.",
   },
   {
-    question: "Cum sunt moderate discuțiile?",
+    question: "Ce face BugHunter diferit față de alte comunități?",
     answer:
-      "Punem accent pe respect, claritate și calitate. Întrebările bune sunt încurajate, iar spam-ul și toxicitatea sunt oprite rapid prin reguli și moderare activă.",
-  },
-  {
-    question: "Ce tip de evenimente organizați?",
-    answer:
-      "Meetup-uri, workshop-uri practice, sesiuni live pe Discord, Q&A cu invitați și prezentări scurte pe subiecte concrete (API, automation, strategie de testare, performanță).",
-  },
-];
-
-/* ── colour tokens for bento cards ── */
-const bentoCards = [
-  {
-    icon: Bug,
-    title: "#qa-manual-problems",
-    desc: "Rapoarte de bug, exploratory testing, test cases. Postezi o problemă reală, primești feedback real.",
-    accent: "from-orange-500/20 via-red-500/10 to-transparent",
-    iconBg: "from-orange-600/30 to-red-600/20",
-  },
-  {
-    icon: Terminal,
-    title: "#qa-automation-problems",
-    desc: "Playwright, Cypress, Selenium. Probleme de scripting, CI/CD, teste instabile — cu soluții din cod real.",
-    accent: "from-indigo-500/20 via-violet-500/10 to-transparent",
-    iconBg: "from-indigo-600/30 to-violet-600/20",
-  },
-  {
-    icon: GraduationCap,
-    title: "#istqb & #ai-enthusiasm",
-    desc: "Pregătire pentru certificare ISTQB și AI tools în testare: Copilot, ChatGPT, agenți de test.",
-    accent: "from-cyan-500/20 via-blue-500/10 to-transparent",
-    iconBg: "from-cyan-600/30 to-blue-600/20",
-  },
-  {
-    icon: Sparkles,
-    title: "#interviu, #jobs & #linkedin",
-    desc: "Simulări de interviuri, feedback pe CV, oportunități de job și conexiuni profesionale reale.",
-    accent: "from-emerald-500/20 via-teal-500/10 to-transparent",
-    iconBg: "from-emerald-600/30 to-teal-600/20",
+      "Punem accent pe structură și calitate: canale clare, reguli, resurse curate, evenimente și răspunsuri orientate pe exemple și context.",
   },
 ];
 
@@ -465,8 +396,8 @@ export default async function HomePage() {
             <div>
               <SectionHeader
                 eyebrow="FAQ"
-                title="Întrebări frecvente"
-                description="Răspunsuri la ce te-ar putea opri înainte să intri."
+                title="Întrebări frecvente despre Discord"
+                description="Intri, te orientezi, pui prima întrebare. Atât."
               />
               <div className="mt-8">
                 <FaqAccordion items={faq} />
@@ -476,19 +407,27 @@ export default async function HomePage() {
             <div>
               <SectionHeader
                 eyebrow="Următorul pas"
-                title="Intră și prezintă-te în 60 de secunde"
-                description="Spune cu ce te ocupi, ce vrei să înveți și la ce proiect lucrezi."
+                title="Checklist pentru o întrebare bună"
+                description="Dacă pui întrebarea cu context, primești un răspuns util mai repede."
               />
               <Card variant="glow" className="mt-8 p-7">
-                <p className="text-sm font-bold tracking-tight">
-                  Mesaj recomandat
-                </p>
-                <div className="mt-3 rounded-xl bg-background-2 p-4 font-mono text-sm leading-relaxed text-muted ring-1 ring-border">
-                  Salut! Sunt [nume], [nivel], lucrez cu [stack].{" "}
-                  <br className="hidden sm:block" />
-                  Vreau să învăț [topic] și am o întrebare despre [context].{" "}
-                  Mulțumesc!
-                </div>
+                <ul className="grid gap-3 text-sm text-muted">
+                  {[
+                    "Ce încerci să obții (scop)?",
+                    "Ce ai încercat deja?",
+                    "Care sunt pașii de reproducere?",
+                    "Ce era așteptat vs ce ai obținut?",
+                    "Ce mediu folosești (browser, OS, tool, versiuni)?",
+                  ].map((t) => (
+                    <li key={t} className="flex items-start gap-2">
+                      <span
+                        className="mt-2 size-1.5 rounded-full bg-primary-2"
+                        aria-hidden
+                      />
+                      <span>{t}</span>
+                    </li>
+                  ))}
+                </ul>
                 <ButtonLink
                   href={siteConfig.discordInviteUrl}
                   target="_blank"

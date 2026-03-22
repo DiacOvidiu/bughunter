@@ -8,7 +8,6 @@ import {
 } from "lucide-react";
 
 import { DiscordCTABlock } from "@/components/blocks/discord-cta";
-import { FaqAccordion } from "@/components/blocks/faq";
 import { Container } from "@/components/layout/container";
 import { Section, SectionHeader } from "@/components/layout/section";
 import { ButtonLink } from "@/components/ui/button";
@@ -16,7 +15,6 @@ import { Card } from "@/components/ui/card";
 import { JsonLdScript } from "@/components/seo/jsonld";
 import {
   breadcrumbListJsonLd,
-  faqPageJsonLd,
   webPageJsonLd,
 } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
@@ -79,24 +77,6 @@ const rules = [
   },
 ];
 
-const faq = [
-  {
-    question: "Ce trebuie să fac imediat după ce intru?",
-    answer:
-      "Intră în #onboarding, alege rolurile, citește regulile și postează o scurtă prezentare în #general. Apoi poți deschide un thread cu prima întrebare în canalul potrivit.",
-  },
-  {
-    question: "Există mentorat?",
-    answer:
-      "Da: feedback pe portofoliu, ajutor cu CV-ul, direcții clare de învățare și sesiuni tematice. Nu promitem mentorat individual pentru toți, dar ajutor real găsești.",
-  },
-  {
-    question: "Ce face BugHunter diferit față de alte comunități?",
-    answer:
-      "Punem accent pe structură și calitate: canale clare, reguli, resurse curate, evenimente și răspunsuri orientate pe exemple și context.",
-  },
-];
-
 export default function CommunityPage() {
   return (
     <>
@@ -113,7 +93,6 @@ export default function CommunityPage() {
           { name: "Discord", path: "/comunitate" },
         ])}
       />
-      <JsonLdScript data={faqPageJsonLd(faq)} />
       <section className="relative overflow-hidden pb-16 pt-16 sm:pt-20 lg:pt-28">
         <div
           aria-hidden
@@ -307,54 +286,6 @@ export default function CommunityPage() {
         title="Intră pe Discord și pune prima întrebare cu context"
         description="Dacă ai un bug, o dilemă de strategie sau vrei să te apuci de automation, începe aici. Comunitatea te ajută să alegi pasul următor."
       />
-
-      <Section>
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-start">
-            <div>
-              <SectionHeader
-                eyebrow="FAQ"
-                title="Întrebări frecvente despre Discord"
-                description="Intri, te orientezi, pui prima întrebare. Atât."
-              />
-              <div className="mt-8">
-                <FaqAccordion items={faq} />
-              </div>
-            </div>
-            <Card className="p-7">
-              <div className="text-sm font-semibold tracking-tight">
-                Checklist pentru o întrebare bună
-              </div>
-              <ul className="mt-4 grid gap-3 text-sm text-muted">
-                {[
-                  "Ce încerci să obții (scop)?",
-                  "Ce ai încercat deja?",
-                  "Care sunt pașii de reproducere?",
-                  "Ce era așteptat vs ce ai obținut?",
-                  "Ce mediu folosești (browser, OS, tool, versiuni)?",
-                ].map((t) => (
-                  <li key={t} className="flex items-start gap-2">
-                    <span
-                      className="mt-2 size-1.5 rounded-full bg-primary-2"
-                      aria-hidden
-                    />
-                    <span>{t}</span>
-                  </li>
-                ))}
-              </ul>
-              <ButtonLink
-                href={siteConfig.discordInviteUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-6 w-full justify-center"
-              >
-                Intră pe Discord
-                <ArrowRight className="size-4" aria-hidden />
-              </ButtonLink>
-            </Card>
-          </div>
-        </Container>
-      </Section>
     </>
   );
 }

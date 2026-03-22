@@ -1,4 +1,4 @@
-import { ArrowRight, MessageSquare } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
 import { ButtonLink } from "@/components/ui/button";

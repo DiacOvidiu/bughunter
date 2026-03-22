@@ -1,9 +1,4 @@
-import {
-  ArrowRight,
-  CheckCircle2,
-  ChevronRight,
-  Zap,
-} from "lucide-react";
+import { ArrowRight, CheckCircle2, ChevronRight, Zap } from "lucide-react";
 
 import { DiscordCTABlock } from "@/components/blocks/discord-cta";
 import { FaqAccordion } from "@/components/blocks/faq";
@@ -180,9 +175,6 @@ export default async function HomePage() {
                   Intră pe Discord
                   <ArrowRight className="size-4" aria-hidden />
                 </ButtonLink>
-                <ButtonLink href="/despre" variant="secondary" size="lg">
-                  Cum funcționează
-                </ButtonLink>
               </div>
 
               {/* Inline stats row */}
@@ -262,53 +254,6 @@ export default async function HomePage() {
       <DiscordCTABlock />
 
       {/* ═══════════════════════════════════════════════
-          EVENTS + NEWSLETTER — side by side
-      ═══════════════════════════════════════════════ */}
-      <Section tone="subtle">
-        <Container className="max-w-7xl">
-          <div className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-            <div>
-              <SectionHeader
-                eyebrow="Evenimente"
-                title="Învățare + networking, fără formalități"
-                description="Meetup-uri, workshop-uri și sesiuni live gândite pentru practică. Biletele și detaliile sunt mereu clare."
-              />
-              <div className="mt-8 grid gap-3">
-                {highlightedEvents.map((e) => (
-                  <EventCard
-                    key={e.slug}
-                    href={`/evenimente/${e.slug}`}
-                    title={e.title}
-                    description={e.description}
-                    dateLabel={e.dateLabel}
-                    location={e.location}
-                    status={e.status}
-                  />
-                ))}
-              </div>
-              <div className="mt-6">
-                <ButtonLink href="/evenimente" variant="secondary">
-                  Toate evenimentele
-                  <ArrowRight className="size-4" aria-hidden />
-                </ButtonLink>
-              </div>
-            </div>
-
-            <div>
-              <SectionHeader
-                eyebrow="Newsletter"
-                title="Noutăți utile, nu spam"
-                description="Anunțăm evenimentele, articolele și resursele noi — ca să nu ratezi ce merită citit."
-              />
-              <div className="mt-8">
-                <NewsletterForm />
-              </div>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* ═══════════════════════════════════════════════
           BLOG
       ═══════════════════════════════════════════════ */}
       <Section>
@@ -336,53 +281,6 @@ export default async function HomePage() {
               Toate articolele
               <ArrowRight className="size-4" aria-hidden />
             </ButtonLink>
-          </div>
-        </Container>
-      </Section>
-
-      {/* ═══════════════════════════════════════════════
-          RESOURCES
-      ═══════════════════════════════════════════════ */}
-      <Section tone="subtle">
-        <Container className="max-w-7xl">
-          <SectionHeader
-            eyebrow="Resurse"
-            title="Ghiduri și resurse practice pentru testare"
-            description="Începe cu un roadmap clar sau aprofundează: API testing, performance, mobile, security, strategie."
-          />
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {highlightedResources.map((r) => (
-              <ResourceCard
-                key={r.id}
-                href={r.href}
-                label={r.label}
-                title={r.title}
-                description={r.description}
-              />
-            ))}
-          </div>
-          <div className="mt-8">
-            <ButtonLink href="/resurse" variant="secondary">
-              Toate resursele
-              <ArrowRight className="size-4" aria-hidden />
-            </ButtonLink>
-          </div>
-        </Container>
-      </Section>
-
-      {/* ═══════════════════════════════════════════════
-          TESTIMONIALS
-      ═══════════════════════════════════════════════ */}
-      <Section>
-        <Container className="max-w-7xl">
-          <SectionHeader
-            eyebrow="Ce spun membrii"
-            title="O comunitate care îți respectă timpul"
-            description="Oameni care răspund cu exemple, nu cu opinii. Asta face diferența."
-            align="center"
-          />
-          <div className="mt-12">
-            <TestimonialsGrid items={testimonials} />
           </div>
         </Container>
       </Section>

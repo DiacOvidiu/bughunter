@@ -96,9 +96,6 @@ export default function AboutPage() {
                   Intră pe Discord
                   <ArrowRight className="size-4" aria-hidden />
                 </ButtonLink>
-                <ButtonLink href="/comunitate" variant="secondary" size="lg">
-                  Cum funcționează
-                </ButtonLink>
               </div>
 
               <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">

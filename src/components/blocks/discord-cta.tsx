@@ -64,13 +64,6 @@ export function DiscordCTABlock({
                 Intră pe Discord
                 <ArrowRight className="size-4" aria-hidden />
               </ButtonLink>
-              <ButtonLink
-                href="/comunitate"
-                variant="secondary"
-                className="justify-center bg-white/10 text-white ring-white/20 hover:bg-white/18 hover:ring-white/35 hover:text-white"
-              >
-                Cum funcționează
-              </ButtonLink>
             </div>
           </div>
         </div>

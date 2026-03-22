@@ -2,20 +2,14 @@ import { ArrowRight, CheckCircle2, ChevronRight, Zap } from "lucide-react";
 
 import { DiscordCTABlock } from "@/components/blocks/discord-cta";
 import { FaqAccordion } from "@/components/blocks/faq";
-import { NewsletterForm } from "@/components/blocks/newsletter";
-import { TestimonialsGrid } from "@/components/blocks/testimonials";
 import { BlogCard } from "@/components/cards/blog-card";
-import { EventCard } from "@/components/cards/event-card";
-import { ResourceCard } from "@/components/cards/resource-card";
 import { Container } from "@/components/layout/container";
 import { Section, SectionHeader } from "@/components/layout/section";
 import { ButtonLink } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { JsonLdScript } from "@/components/seo/jsonld";
-import { getAllEvents, getEventStatus } from "@/content/events";
-import { resources } from "@/content/resources";
 import { getAllBlogPosts } from "@/lib/content/blog";
-import { formatDateShort, formatMonthYear } from "@/lib/format";
+import { formatDateShort } from "@/lib/format";
 import {
   faqPageJsonLd,
   organizationJsonLd,
@@ -31,27 +25,6 @@ export const metadata = buildMetadata({
     "BugHunter este comunitatea QA din România (Discord-first) pentru manual testing, automation și quality engineering. Resurse, articole și evenimente.",
   path: "/",
 });
-
-const testimonials = [
-  {
-    quote:
-      "Am primit feedback pe CV și mi-am îmbunătățit portofoliul. Diferența s-a simțit la interviuri.",
-    name: "Andreea M.",
-    role: "QA Engineer (mid), București",
-  },
-  {
-    quote:
-      "Canalele pe API testing și test strategy sunt aur. Oameni care răspund cu exemple, nu cu păreri.",
-    name: "Radu P.",
-    role: "SDET, Cluj-Napoca",
-  },
-  {
-    quote:
-      "Pentru juniori e cel mai bun loc să întrebi fără frică, dar și fără să primești răspunsuri superficiale.",
-    name: "Mihai D.",
-    role: "Junior QA, Iași",
-  },
-];
 
 const faq = [
   {
@@ -72,16 +45,6 @@ const faq = [
 ];
 
 export default async function HomePage() {
-  const events = getAllEvents();
-  const highlightedEvents = events.slice(0, 3).map((e) => ({
-    slug: e.slug,
-    title: e.title,
-    description: e.excerpt,
-    dateLabel: formatMonthYear(e.startDate),
-    location: e.locationLabel,
-    status: getEventStatus(e),
-  }));
-
   const posts = (await getAllBlogPosts()).slice(0, 3).map((p) => ({
     slug: p.slug,
     title: p.title,
@@ -90,8 +53,6 @@ export default async function HomePage() {
     readingTime: p.readingTimeText,
     dateLabel: formatDateShort(p.date),
   }));
-
-  const highlightedResources = resources.slice(0, 3);
 
   return (
     <>

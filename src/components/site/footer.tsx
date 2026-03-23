@@ -6,9 +6,7 @@ import { ButtonLink } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site";
 
 const links = [
-  { href: "/despre", label: "Despre" },
   { href: "/blog", label: "Articole" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export function SiteFooter() {

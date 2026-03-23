@@ -262,8 +262,8 @@ export default async function HomePage() {
               </p>
             </div>
             <div>
-              <ButtonLink href="/contact" size="lg">
-                Contactează-ne
+              <ButtonLink href={`mailto:${siteConfig.email}`} size="lg">
+                Scrie pe email
                 <ArrowRight className="size-4" aria-hidden />
               </ButtonLink>
             </div>

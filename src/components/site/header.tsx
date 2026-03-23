@@ -2,21 +2,14 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import {
-  Bug,
-  Newspaper,
-  Phone,
-  Sparkles,
-} from "lucide-react";
+import { Bug, Newspaper } from "lucide-react";
 
 import { ButtonLink } from "@/components/ui/button";
 import { cn } from "@/lib/cn";
 import { siteConfig } from "@/lib/site";
 
 const nav = [
-  { href: "/despre", label: "Despre", icon: Sparkles },
   { href: "/blog", label: "Articole", icon: Newspaper },
-  { href: "/contact", label: "Contact", icon: Phone },
 ];
 
 export function SiteHeader() {

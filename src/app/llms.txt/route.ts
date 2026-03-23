@@ -20,9 +20,7 @@ ${siteConfig.name} este comunitatea de Quality Assurance din România, dedicată
 ## Pagini principale
 
 - [Acasă](${base}/): Prezentare generală, statistici comunitate și articole recente
-- [Despre](${base}/despre): Misiunea, valorile și povestea comunității BugHunter
 - [Blog](${base}/blog): Articole despre QA, testare software și carieră în quality assurance
-- [Contact](${base}/contact): Parteneriate, speakeri și contact direct
 
 ## Articole recente
 

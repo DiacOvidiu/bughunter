@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Github, Linkedin, MessageSquare, Youtube } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
 import { ButtonLink } from "@/components/ui/button";
@@ -7,7 +7,6 @@ import { siteConfig } from "@/lib/site";
 
 const links = [
   { href: "/despre", label: "Despre" },
-  { href: "/evenimente", label: "Evenimente" },
   { href: "/blog", label: "Articole" },
   { href: "/contact", label: "Contact" },
 ];
@@ -42,9 +41,6 @@ export function SiteFooter() {
               <MessageSquare className="size-3.5" aria-hidden />
               Intră pe Discord
             </ButtonLink>
-            <ButtonLink href="/evenimente" variant="secondary" size="sm">
-              Evenimente
-            </ButtonLink>
           </div>
         </div>
 
@@ -69,56 +65,20 @@ export function SiteFooter() {
 
         {/* Social */}
         <div>
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-primary/70">
-            Social
-          </p>
-          <div className="mt-5 flex flex-wrap gap-2">
-            <ButtonLink
-              href={siteConfig.socials.linkedin}
-              variant="secondary"
-              size="sm"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Linkedin className="size-3.5" aria-hidden />
-              LinkedIn
-            </ButtonLink>
-            <ButtonLink
-              href={siteConfig.socials.github}
-              variant="secondary"
-              size="sm"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Github className="size-3.5" aria-hidden />
-              GitHub
-            </ButtonLink>
-            <ButtonLink
-              href={siteConfig.socials.youtube}
-              variant="secondary"
-              size="sm"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Youtube className="size-3.5" aria-hidden />
-              YouTube
-            </ButtonLink>
+          <div className="mt-5 flex flex-wrap gap-2"></div>
+          <div className="mt-8 text-xs leading-relaxed text-muted-2">
+            <p>
+              © {new Date().getFullYear()} {siteConfig.name}.
+              <br />
+              Toate drepturile rezervate.
+            </p>
+            <p className="mt-2">
+              Dezvoltat de{" "}
+              <span className="underline transition-colors hover:text-muted">
+                comunitatea de QA din România
+              </span>
+            </p>
           </div>
-          <p className="mt-8 text-xs leading-relaxed text-muted-2">
-            © {new Date().getFullYear()} {siteConfig.name}.
-            <br />
-            Toate drepturile rezervate.
-            <br />
-            Dezvoltat de{" "}
-            <a
-              href="https://www.diacovidiu.ro/"
-              target="_blank"
-              rel="noreferrer"
-              className="underline hover:text-muted transition-colors"
-            >
-              diacovidiu.ro
-            </a>
-          </p>
         </div>
       </Container>
     </footer>

@@ -126,7 +126,7 @@ export default function AboutPage() {
                 <div className="mt-4 grid gap-3 text-sm text-muted">
                   {[
                     "Standarde: bug reports clare, criterii, trade-offs",
-                    "Învățare: workshop-uri, Q&A, exemple și resurse",
+                    "Învățare: ghiduri, Q&A, exemple și resurse",
                     "Networking: oameni din QA, SDET, QE și leadership",
                   ].map((t) => (
                     <div key={t} className="flex items-start gap-2.5">
@@ -139,11 +139,11 @@ export default function AboutPage() {
                   ))}
                 </div>
                 <ButtonLink
-                  href="/evenimente"
+                  href="/contact"
                   variant="secondary"
                   className="mt-6 w-full justify-center"
                 >
-                  Vezi evenimentele
+                  Intră în legătură
                 </ButtonLink>
               </Card>
             </div>
@@ -180,7 +180,7 @@ export default function AboutPage() {
                 Icon: TrendingUp,
                 color: "text-cyan-400 bg-cyan-500/15",
                 title: "Impact",
-                text: "Pe termen lung, vrem ca BugHunter să fie primul loc la care te gândești când ai o întrebare despre QA în România. Conținut care ajută, evenimente utile și oameni care dau mai departe ce știu.",
+                text: "Pe termen lung, vrem ca BugHunter să fie primul loc la care te gândești când ai o întrebare despre QA în România. Conținut care ajută și oameni care dau mai departe ce știu.",
               },
             ].map((c) => (
               <Card key={c.title} className="p-7">

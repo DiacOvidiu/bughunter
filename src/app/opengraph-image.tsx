@@ -53,8 +53,7 @@ export default function OpenGraphImage() {
           BugHunter
         </div>
         <div style={{ fontSize: 28, opacity: 0.9, lineHeight: 1.4 }}>
-          Discord-first • resurse • evenimente • articole despre QA Testing și
-          Quality Engineering
+          Discord-first • articole despre QA Testing si Quality Engineering
         </div>
       </div>
     </div>,

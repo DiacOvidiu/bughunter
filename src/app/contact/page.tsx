@@ -85,13 +85,13 @@ export default async function ContactPage({
                     title: "Parteneriate",
                     Icon: Handshake,
                     color: "text-indigo-400 bg-indigo-500/15",
-                    text: "Sponsorizări pentru evenimente, colaborări cu companii, programe de învățare.",
+                    text: "Colaborări cu companii, inițiative editoriale și programe de învățare.",
                   },
                   {
                     title: "Speakers & workshop-uri",
                     Icon: Mic2,
                     color: "text-violet-400 bg-violet-500/15",
-                    text: "Invitații la evenimente, sesiuni live, Q&A și workshop-uri practice.",
+                    text: "Speaker invitations, sesiuni live, Q&A și workshop-uri practice.",
                   },
                   {
                     title: "Contact direct",

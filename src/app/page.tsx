@@ -22,7 +22,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata = buildMetadata({
   title: `${siteConfig.name} — Comunitate QA din România`,
   description:
-    "BugHunter este comunitatea QA din România (Discord-first) pentru manual testing, automation și quality engineering. Resurse, articole și evenimente.",
+    "BugHunter este comunitatea QA din România (Discord-first) pentru manual testing, automation și quality engineering. Articole și sprijin real între practicieni.",
   path: "/",
 });
 
@@ -40,7 +40,7 @@ const faq = [
   {
     question: "Ce face BugHunter diferit față de alte comunități?",
     answer:
-      "Punem accent pe structură și calitate: canale clare, reguli, resurse curate, evenimente și răspunsuri orientate pe exemple și context.",
+      "Punem accent pe structură și calitate: canale clare, reguli și răspunsuri orientate pe exemple și context real.",
   },
 ];
 
@@ -257,8 +257,8 @@ export default async function HomePage() {
                 Hai să construim ceva util pentru QA în România
               </h2>
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">
-                Parteneriate, speakeri la evenimente tech, workshop-uri și
-                colaborări editoriale.
+                Parteneriate, speaker invitations, workshop-uri și colaborări
+                editoriale.
               </p>
             </div>
             <div>

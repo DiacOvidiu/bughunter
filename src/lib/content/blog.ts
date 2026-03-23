@@ -20,7 +20,6 @@ export const blogCategories = [
   "Career în QA",
   "Tooling",
   "Best Practices",
-  "Evenimente BugHunter",
 ] as const;
 
 export type BlogCategory = (typeof blogCategories)[number];
@@ -153,4 +152,3 @@ export async function getBlogPostBySlug(slug: string) {
     },
   };
 }
-

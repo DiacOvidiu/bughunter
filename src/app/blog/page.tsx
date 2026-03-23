@@ -88,8 +88,8 @@ export default async function BlogIndexPage() {
                   Intră pe Discord
                   <ArrowRight className="size-4" aria-hidden />
                 </ButtonLink>
-                <ButtonLink href="/evenimente" variant="secondary" size="lg">
-                  Vezi evenimente
+                <ButtonLink href="/contact" variant="secondary" size="lg">
+                  Contactează-ne
                 </ButtonLink>
               </div>
 

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useState } from "react";
 import {
   Bug,
-  CalendarDays,
   Newspaper,
   Phone,
   Sparkles,
@@ -16,7 +15,6 @@ import { siteConfig } from "@/lib/site";
 
 const nav = [
   { href: "/despre", label: "Despre", icon: Sparkles },
-  { href: "/evenimente", label: "Evenimente", icon: CalendarDays },
   { href: "/blog", label: "Articole", icon: Newspaper },
   { href: "/contact", label: "Contact", icon: Phone },
 ];

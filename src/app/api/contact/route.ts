@@ -17,5 +17,5 @@ export async function POST(request: Request) {
     message.length >= 10 &&
     message.length <= 4000;
 
-  return NextResponse.redirect(new URL(`/contact?trimis=${valid ? "ok" : "invalid"}`, request.url), 303);
+  return NextResponse.redirect(new URL(`/?trimis=${valid ? "ok" : "invalid"}`, request.url), 303);
 }

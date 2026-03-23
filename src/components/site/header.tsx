@@ -2,27 +2,14 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import {
-  Bug,
-  CalendarDays,
-  MessageSquare,
-  Newspaper,
-  Phone,
-  Sparkles,
-  Wrench,
-} from "lucide-react";
+import { Bug, Newspaper } from "lucide-react";
 
 import { ButtonLink } from "@/components/ui/button";
 import { cn } from "@/lib/cn";
 import { siteConfig } from "@/lib/site";
 
 const nav = [
-  { href: "/despre", label: "Despre", icon: Sparkles },
-  { href: "/comunitate", label: "Discord", icon: MessageSquare },
-  { href: "/evenimente", label: "Evenimente", icon: CalendarDays },
   { href: "/blog", label: "Articole", icon: Newspaper },
-  { href: "/resurse", label: "Resurse", icon: Wrench },
-  { href: "/contact", label: "Contact", icon: Phone },
 ];
 
 export function SiteHeader() {

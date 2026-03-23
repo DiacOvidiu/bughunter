@@ -175,63 +175,6 @@ export function blogPostingJsonLd({
   };
 }
 
-export function eventJsonLd({
-  path,
-  name,
-  description,
-  startDate,
-  endDate,
-  locationName,
-  locationAddress,
-  eventAttendanceMode = "https://schema.org/OnlineEventAttendanceMode",
-  eventStatus = "https://schema.org/EventScheduled",
-}: {
-  path: string;
-  name: string;
-  description: string;
-  startDate: string;
-  endDate?: string;
-  locationName: string;
-  locationAddress: string;
-  eventAttendanceMode?: string;
-  eventStatus?: string;
-}): JsonLd {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Event",
-    "@id": `${absoluteUrl(path)}#event`,
-    name,
-    description,
-    startDate,
-    endDate: endDate ?? startDate,
-    url: absoluteUrl(path),
-    inLanguage: "ro-RO",
-    eventAttendanceMode,
-    eventStatus,
-    image: {
-      "@type": "ImageObject",
-      url: absoluteUrl("/opengraph-image"),
-      width: 1200,
-      height: 630,
-    },
-    location: {
-      "@type": "Place",
-      name: locationName,
-      address: locationAddress,
-    },
-    organizer: {
-      "@type": "Organization",
-      "@id": `${siteConfig.url}/#organization`,
-      name: siteConfig.name,
-      url: siteConfig.url,
-    },
-    audience: {
-      "@type": "Audience",
-      audienceType: "QA Engineers, Software Testers, Quality Assurance Professionals",
-    },
-  };
-}
-
 export function blogCollectionJsonLd(): JsonLd {
   return {
     "@context": "https://schema.org",

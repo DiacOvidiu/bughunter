@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — Comunitatea QA din România`,
+    default: `${siteConfig.name} — Comunitate QA din România`,
     template: `%s — ${siteConfig.name}`,
   },
   description: siteConfig.description,

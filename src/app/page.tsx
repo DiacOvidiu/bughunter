@@ -1,35 +1,15 @@
-import {
-  ArrowRight,
-  BookOpen,
-  Bug,
-  CheckCircle2,
-  ChevronRight,
-  Compass,
-  GraduationCap,
-  MessagesSquare,
-  Sparkles,
-  Terminal,
-  Users,
-  Zap,
-} from "lucide-react";
+import { ArrowRight, CheckCircle2, ChevronRight, Zap } from "lucide-react";
 
 import { DiscordCTABlock } from "@/components/blocks/discord-cta";
 import { FaqAccordion } from "@/components/blocks/faq";
-import { NewsletterForm } from "@/components/blocks/newsletter";
-import { StatsGrid } from "@/components/blocks/stats";
-import { TestimonialsGrid } from "@/components/blocks/testimonials";
 import { BlogCard } from "@/components/cards/blog-card";
-import { EventCard } from "@/components/cards/event-card";
-import { ResourceCard } from "@/components/cards/resource-card";
 import { Container } from "@/components/layout/container";
 import { Section, SectionHeader } from "@/components/layout/section";
 import { ButtonLink } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { JsonLdScript } from "@/components/seo/jsonld";
-import { getAllEvents, getEventStatus } from "@/content/events";
-import { resources } from "@/content/resources";
 import { getAllBlogPosts } from "@/lib/content/blog";
-import { formatDateShort, formatMonthYear } from "@/lib/format";
+import { formatDateShort } from "@/lib/format";
 import {
   faqPageJsonLd,
   organizationJsonLd,
@@ -46,116 +26,25 @@ export const metadata = buildMetadata({
   path: "/",
 });
 
-const stats = [
-  {
-    label: "Membri în comunitate",
-    value: "250+",
-    hint: "Din octombrie 2022, creștem constant",
-  },
-  {
-    label: "Sesiuni live / lună",
-    value: "~2",
-    hint: "Pe canalul vocal LOUNGE, o dată la 2 săptămâni",
-  },
-  {
-    label: "Canale active",
-    value: "20+",
-    hint: "manual, automation, interviu, jobs, istqb, AI",
-  },
-  {
-    label: "Comunitate activă din",
-    value: "2022",
-    hint: "Fondată în octombrie 2022",
-  },
-];
-
-const testimonials = [
-  {
-    quote:
-      "Am primit feedback pe CV și mi-am îmbunătățit portofoliul. Diferența s-a simțit la interviuri.",
-    name: "Andreea M.",
-    role: "QA Engineer (mid), București",
-  },
-  {
-    quote:
-      "Canalele pe API testing și test strategy sunt aur. Oameni care răspund cu exemple, nu cu păreri.",
-    name: "Radu P.",
-    role: "SDET, Cluj-Napoca",
-  },
-  {
-    quote:
-      "Pentru juniori e cel mai bun loc să întrebi fără frică, dar și fără să primești răspunsuri superficiale.",
-    name: "Mihai D.",
-    role: "Junior QA, Iași",
-  },
-];
-
 const faq = [
   {
-    question: "Este BugHunter doar pentru testare manuală?",
+    question: "Ce trebuie să fac imediat după ce intru?",
     answer:
-      "Nu. Comunitatea e deschisă pentru testare manuală, automatizare, API, performance, security, quality engineering și roluri adiacente. Structura pe canale te ajută să găsești rapid subiectele relevante.",
+      "Intră în #onboarding, alege rolurile, citește regulile și postează o scurtă prezentare în #general. Apoi poți deschide un thread cu prima întrebare în canalul potrivit.",
   },
   {
-    question: "Pot intra dacă sunt la început și nu am job în QA?",
+    question: "Există mentorat?",
     answer:
-      "Da. Avem onboarding, resurse, întrebări ghidate și sesiuni care te ajută să construiești bazele: mindset, practică, tool-uri, portofoliu, interviuri.",
+      "Da: feedback pe portofoliu, ajutor cu CV-ul, direcții clare de învățare și sesiuni tematice. Nu promitem mentorat individual pentru toți, dar ajutor real găsești.",
   },
   {
-    question: "Cum sunt moderate discuțiile?",
+    question: "Ce face BugHunter diferit față de alte comunități?",
     answer:
-      "Punem accent pe respect, claritate și calitate. Întrebările bune sunt încurajate, iar spam-ul și toxicitatea sunt oprite rapid prin reguli și moderare activă.",
-  },
-  {
-    question: "Ce tip de evenimente organizați?",
-    answer:
-      "Meetup-uri, workshop-uri practice, sesiuni live pe Discord, Q&A cu invitați și prezentări scurte pe subiecte concrete (API, automation, strategie de testare, performanță).",
-  },
-];
-
-/* ── colour tokens for bento cards ── */
-const bentoCards = [
-  {
-    icon: Bug,
-    title: "#qa-manual-problems",
-    desc: "Rapoarte de bug, exploratory testing, test cases. Postezi o problemă reală, primești feedback real.",
-    accent: "from-orange-500/20 via-red-500/10 to-transparent",
-    iconBg: "from-orange-600/30 to-red-600/20",
-  },
-  {
-    icon: Terminal,
-    title: "#qa-automation-problems",
-    desc: "Playwright, Cypress, Selenium. Probleme de scripting, CI/CD, teste instabile — cu soluții din cod real.",
-    accent: "from-indigo-500/20 via-violet-500/10 to-transparent",
-    iconBg: "from-indigo-600/30 to-violet-600/20",
-  },
-  {
-    icon: GraduationCap,
-    title: "#istqb & #ai-enthusiasm",
-    desc: "Pregătire pentru certificare ISTQB și AI tools în testare: Copilot, ChatGPT, agenți de test.",
-    accent: "from-cyan-500/20 via-blue-500/10 to-transparent",
-    iconBg: "from-cyan-600/30 to-blue-600/20",
-  },
-  {
-    icon: Sparkles,
-    title: "#interviu, #jobs & #linkedin",
-    desc: "Simulări de interviuri, feedback pe CV, oportunități de job și conexiuni profesionale reale.",
-    accent: "from-emerald-500/20 via-teal-500/10 to-transparent",
-    iconBg: "from-emerald-600/30 to-teal-600/20",
+      "Punem accent pe structură și calitate: canale clare, reguli, resurse curate, evenimente și răspunsuri orientate pe exemple și context.",
   },
 ];
 
 export default async function HomePage() {
-  const events = getAllEvents();
-  const highlightedEvents = events.slice(0, 3).map((e) => ({
-    slug: e.slug,
-    title: e.title,
-    description: e.excerpt,
-    dateLabel: formatMonthYear(e.startDate),
-    location: e.locationLabel,
-    status: getEventStatus(e),
-  }));
-
   const posts = (await getAllBlogPosts()).slice(0, 3).map((p) => ({
     slug: p.slug,
     title: p.title,
@@ -164,8 +53,6 @@ export default async function HomePage() {
     readingTime: p.readingTimeText,
     dateLabel: formatDateShort(p.date),
   }));
-
-  const highlightedResources = resources.slice(0, 3);
 
   return (
     <>
@@ -249,9 +136,6 @@ export default async function HomePage() {
                   Intră pe Discord
                   <ArrowRight className="size-4" aria-hidden />
                 </ButtonLink>
-                <ButtonLink href="/despre" variant="secondary" size="lg">
-                  Cum funcționează
-                </ButtonLink>
               </div>
 
               {/* Inline stats row */}
@@ -259,7 +143,6 @@ export default async function HomePage() {
                 {[
                   { value: "250+", label: "Membri" },
                   { value: "20+", label: "Canale" },
-                  { value: "~2 / lună", label: "Sesiuni live" },
                   { value: "2022", label: "Fondată" },
                 ].map((s) => (
                   <div key={s.label}>
@@ -327,208 +210,9 @@ export default async function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          BENTO — What you learn here
-      ═══════════════════════════════════════════════ */}
-      <Section tone="subtle">
-        <Container className="max-w-7xl">
-          <SectionHeader
-            eyebrow="Ce înveți"
-            title="Tot ce contează în QA, într-un singur loc"
-            description="Canale organizate pe discipline. Nu cauți prin zeci de mesaje — găsești direct ce îți trebuie."
-          />
-
-          {/* 4 carduri egale */}
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {bentoCards.map((card) => (
-              <div
-                key={card.title}
-                className="group relative overflow-hidden rounded-2xl bg-card p-6 ring-1 ring-border shadow-(--shadow) transition-all duration-300 hover:bg-card-2 hover:ring-border-2 hover:shadow-(--shadow-glow) hover:-translate-y-1"
-              >
-                <div
-                  aria-hidden
-                  className={`pointer-events-none absolute inset-0 bg-linear-to-br ${card.accent} opacity-60 transition-opacity group-hover:opacity-90`}
-                />
-                <div className="relative">
-                  <div
-                    className={`flex size-10 items-center justify-center rounded-xl bg-linear-to-br ${card.iconBg} ring-1 ring-white/10`}
-                  >
-                    <card.icon className="size-5 text-white/90" aria-hidden />
-                  </div>
-                  <h3 className="mt-4 text-sm font-bold tracking-tight">
-                    {card.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">
-                    {card.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA full-width orizontal */}
-          <div className="mt-4 relative overflow-hidden rounded-2xl bg-linear-to-r from-indigo-700 via-violet-700 to-indigo-900 p-7 ring-1 ring-indigo-500/40 shadow-(--shadow-glow)">
-            <div aria-hidden className="pointer-events-none absolute inset-0 bg-dots opacity-15" />
-            <div className="relative flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex items-start gap-5">
-                <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/20">
-                  <Users className="size-6 text-white/90" aria-hidden />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-white">Comunitate activă din 2022</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-white/70">
-                    250+ membri, sesiuni live pe LOUNGE la 2 săptămâni, zero toxicitate.
-                    Intri, te prezinți, pui prima întrebare — comunitatea răspunde.
-                  </p>
-                </div>
-              </div>
-              <div className="shrink-0">
-                <ButtonLink
-                  href={siteConfig.discordInviteUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="bg-white text-indigo-700 hover:bg-white/90 ring-white/30"
-                  variant="secondary"
-                >
-                  Alătură-te acum
-                  <ArrowRight className="size-4" aria-hidden />
-                </ButtonLink>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* ═══════════════════════════════════════════════
-          STATS
-      ═══════════════════════════════════════════════ */}
-      <Section>
-        <Container className="max-w-7xl">
-          <SectionHeader
-            eyebrow="Credibilitate"
-            title="Calitate înainte de zgomot"
-            description="Am construit BugHunter ca un produs: structură clară, onboarding, reguli, conținut util."
-          />
-          <div className="mt-10">
-            <StatsGrid stats={stats} />
-          </div>
-        </Container>
-      </Section>
-
-      {/* ═══════════════════════════════════════════════
-          WHY — 3-column feature cards
-      ═══════════════════════════════════════════════ */}
-      <Section tone="subtle">
-        <Container className="max-w-7xl">
-          <SectionHeader
-            eyebrow="De ce BugHunter"
-            title="Pentru că QA în 2026 înseamnă skill + comunitate"
-            description="Acces la exemple, feedback și oameni cu experiență — înveți mai repede, eviți capcanele clasice."
-          />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                icon: MessagesSquare,
-                num: "01",
-                title: "Întrebări bune, răspunsuri bune",
-                text: "Punem accent pe context, reproducere, criterii de acceptare și trade-offs, nu pe scurtături.",
-                color: "from-indigo-600/25 to-violet-600/15",
-              },
-              {
-                icon: BookOpen,
-                num: "02",
-                title: "Cunoștințe care se transmit",
-                text: "Sesiuni scurte, workshop-uri și subiecte care rămân de referință. Ce e util nu se pierde în scroll.",
-                color: "from-cyan-600/25 to-blue-600/15",
-              },
-              {
-                icon: Compass,
-                num: "03",
-                title: "Carieră: junior → senior",
-                text: "Roadmap-uri, portofoliu, interviuri și creștere pe competențe: tehnic, comunicare și gândire sistemică.",
-                color: "from-violet-600/25 to-pink-600/15",
-              },
-            ].map((f) => (
-              <div
-                key={f.title}
-                className="group relative overflow-hidden rounded-2xl bg-card p-7 ring-1 ring-border shadow-(--shadow) transition-all duration-300 hover:bg-card-2 hover:ring-border-2 hover:shadow-(--shadow-glow) hover:-translate-y-1"
-              >
-                <div
-                  aria-hidden
-                  className={`pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-linear-to-br ${f.color} blur-2xl transition-opacity group-hover:opacity-150`}
-                />
-                <div className="relative">
-                  <div className="flex items-center justify-between">
-                    <div className="flex size-10 items-center justify-center rounded-xl bg-card-2 ring-1 ring-border">
-                      <f.icon className="size-5 text-primary" aria-hidden />
-                    </div>
-                    <span className="text-3xl font-black text-border-2/50 tabular-nums">
-                      {f.num}
-                    </span>
-                  </div>
-                  <h3 className="mt-4 text-base font-bold tracking-tight">
-                    {f.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">
-                    {f.text}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      {/* ═══════════════════════════════════════════════
           DISCORD CTA
       ═══════════════════════════════════════════════ */}
       <DiscordCTABlock />
-
-      {/* ═══════════════════════════════════════════════
-          EVENTS + NEWSLETTER — side by side
-      ═══════════════════════════════════════════════ */}
-      <Section tone="subtle">
-        <Container className="max-w-7xl">
-          <div className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-            <div>
-              <SectionHeader
-                eyebrow="Evenimente"
-                title="Învățare + networking, fără formalități"
-                description="Meetup-uri, workshop-uri și sesiuni live gândite pentru practică. Biletele și detaliile sunt mereu clare."
-              />
-              <div className="mt-8 grid gap-3">
-                {highlightedEvents.map((e) => (
-                  <EventCard
-                    key={e.slug}
-                    href={`/evenimente/${e.slug}`}
-                    title={e.title}
-                    description={e.description}
-                    dateLabel={e.dateLabel}
-                    location={e.location}
-                    status={e.status}
-                  />
-                ))}
-              </div>
-              <div className="mt-6">
-                <ButtonLink href="/evenimente" variant="secondary">
-                  Toate evenimentele
-                  <ArrowRight className="size-4" aria-hidden />
-                </ButtonLink>
-              </div>
-            </div>
-
-            <div>
-              <SectionHeader
-                eyebrow="Newsletter"
-                title="Noutăți utile, nu spam"
-                description="Anunțăm evenimentele, articolele și resursele noi — ca să nu ratezi ce merită citit."
-              />
-              <div className="mt-8">
-                <NewsletterForm />
-              </div>
-            </div>
-          </div>
-        </Container>
-      </Section>
 
       {/* ═══════════════════════════════════════════════
           BLOG
@@ -563,53 +247,6 @@ export default async function HomePage() {
       </Section>
 
       {/* ═══════════════════════════════════════════════
-          RESOURCES
-      ═══════════════════════════════════════════════ */}
-      <Section tone="subtle">
-        <Container className="max-w-7xl">
-          <SectionHeader
-            eyebrow="Resurse"
-            title="Ghiduri și resurse practice pentru testare"
-            description="Începe cu un roadmap clar sau aprofundează: API testing, performance, mobile, security, strategie."
-          />
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {highlightedResources.map((r) => (
-              <ResourceCard
-                key={r.id}
-                href={r.href}
-                label={r.label}
-                title={r.title}
-                description={r.description}
-              />
-            ))}
-          </div>
-          <div className="mt-8">
-            <ButtonLink href="/resurse" variant="secondary">
-              Toate resursele
-              <ArrowRight className="size-4" aria-hidden />
-            </ButtonLink>
-          </div>
-        </Container>
-      </Section>
-
-      {/* ═══════════════════════════════════════════════
-          TESTIMONIALS
-      ═══════════════════════════════════════════════ */}
-      <Section>
-        <Container className="max-w-7xl">
-          <SectionHeader
-            eyebrow="Ce spun membrii"
-            title="O comunitate care îți respectă timpul"
-            description="Oameni care răspund cu exemple, nu cu opinii. Asta face diferența."
-            align="center"
-          />
-          <div className="mt-12">
-            <TestimonialsGrid items={testimonials} />
-          </div>
-        </Container>
-      </Section>
-
-      {/* ═══════════════════════════════════════════════
           FAQ + FINAL CTA
       ═══════════════════════════════════════════════ */}
       <Section tone="subtle">
@@ -618,8 +255,8 @@ export default async function HomePage() {
             <div>
               <SectionHeader
                 eyebrow="FAQ"
-                title="Întrebări frecvente"
-                description="Răspunsuri la ce te-ar putea opri înainte să intri."
+                title="Întrebări frecvente despre Discord"
+                description="Intri, te orientezi, pui prima întrebare. Atât."
               />
               <div className="mt-8">
                 <FaqAccordion items={faq} />
@@ -629,19 +266,27 @@ export default async function HomePage() {
             <div>
               <SectionHeader
                 eyebrow="Următorul pas"
-                title="Intră și prezintă-te în 60 de secunde"
-                description="Spune cu ce te ocupi, ce vrei să înveți și la ce proiect lucrezi."
+                title="Checklist pentru o întrebare bună"
+                description="Dacă pui întrebarea cu context, primești un răspuns util mai repede."
               />
               <Card variant="glow" className="mt-8 p-7">
-                <p className="text-sm font-bold tracking-tight">
-                  Mesaj recomandat
-                </p>
-                <div className="mt-3 rounded-xl bg-background-2 p-4 font-mono text-sm leading-relaxed text-muted ring-1 ring-border">
-                  Salut! Sunt [nume], [nivel], lucrez cu [stack].{" "}
-                  <br className="hidden sm:block" />
-                  Vreau să învăț [topic] și am o întrebare despre [context].{" "}
-                  Mulțumesc!
-                </div>
+                <ul className="grid gap-3 text-sm text-muted">
+                  {[
+                    "Ce încerci să obții (scop)?",
+                    "Ce ai încercat deja?",
+                    "Care sunt pașii de reproducere?",
+                    "Ce era așteptat vs ce ai obținut?",
+                    "Ce mediu folosești (browser, OS, tool, versiuni)?",
+                  ].map((t) => (
+                    <li key={t} className="flex items-start gap-2">
+                      <span
+                        className="mt-2 size-1.5 rounded-full bg-primary-2"
+                        aria-hidden
+                      />
+                      <span>{t}</span>
+                    </li>
+                  ))}
+                </ul>
                 <ButtonLink
                   href={siteConfig.discordInviteUrl}
                   target="_blank"

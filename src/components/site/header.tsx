@@ -64,14 +64,6 @@ export function SiteHeader() {
         {/* Desktop CTA */}
         <div className="hidden items-center gap-2 sm:flex">
           <ButtonLink
-            href="/comunitate"
-            variant="secondary"
-            size="sm"
-            className="hidden lg:inline-flex"
-          >
-            Canale Discord
-          </ButtonLink>
-          <ButtonLink
             href={siteConfig.discordInviteUrl}
             target="_blank"
             rel="noreferrer"

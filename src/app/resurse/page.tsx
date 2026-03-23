@@ -48,7 +48,10 @@ export default function ResourcesPage() {
         ])}
       />
       <section className="relative overflow-hidden pb-16 pt-16 sm:pt-20 lg:pt-28">
-        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 overflow-hidden"
+        >
           <div className="absolute -left-[260px] -top-[220px] h-[720px] w-[720px] rounded-full bg-indigo-600/12 blur-[120px] animate-float" />
           <div className="absolute -right-[220px] -top-[160px] h-[600px] w-[600px] rounded-full bg-cyan-500/10 blur-[110px] animate-float-alt" />
           <div
@@ -56,7 +59,10 @@ export default function ResourcesPage() {
             style={{ animationDelay: "3s" }}
           />
         </div>
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-dots opacity-45" />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-dots opacity-45"
+        />
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_0%,transparent_52%,var(--background)_100%)]"
@@ -76,7 +82,8 @@ export default function ResourcesPage() {
                 Toolkits și ghiduri pentru QA modern
               </h1>
               <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
-                Resurse curate, gândite pentru practică. Dacă vrei recomandări personalizate, intră pe Discord și spune ce urmărești.
+                Resurse curate, gândite pentru practică. Dacă vrei recomandări
+                personalizate, intră pe Discord și spune ce urmărești.
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <ButtonLink
@@ -112,7 +119,9 @@ export default function ResourcesPage() {
 
             <div className="gradient-border rounded-2xl">
               <Card variant="glow" className="p-7">
-                <div className="text-sm font-bold tracking-tight">Cum folosești pagina asta</div>
+                <div className="text-sm font-bold tracking-tight">
+                  Cum folosești pagina asta
+                </div>
                 <div className="mt-4 grid gap-3 text-sm text-muted">
                   {[
                     "Alege o secțiune și aplică checklist-ul pe un proiect real",
@@ -120,12 +129,19 @@ export default function ResourcesPage() {
                     "Cere feedback pe Discord cu context și ce ai încercat",
                   ].map((t) => (
                     <div key={t} className="flex items-start gap-2.5">
-                      <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary-2" aria-hidden />
+                      <CheckCircle2
+                        className="mt-0.5 size-4 shrink-0 text-primary-2"
+                        aria-hidden
+                      />
                       <span>{t}</span>
                     </div>
                   ))}
                 </div>
-                <ButtonLink href="/comunitate" variant="secondary" className="mt-6 w-full justify-center">
+                <ButtonLink
+                  href="/comunitate"
+                  variant="secondary"
+                  className="mt-6 w-full justify-center"
+                >
                   Vezi cum funcționează Discord-ul
                 </ButtonLink>
               </Card>
@@ -208,9 +224,6 @@ export default function ResourcesPage() {
               >
                 Intră pe Discord
                 <ArrowRight className="size-4" aria-hidden />
-              </ButtonLink>
-              <ButtonLink href="/comunitate" variant="secondary">
-                Vezi cum funcționează
               </ButtonLink>
             </div>
           </Card>

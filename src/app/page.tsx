@@ -246,6 +246,31 @@ export default async function HomePage() {
         </Container>
       </Section>
 
+      <Section tone="subtle">
+        <Container className="max-w-7xl">
+          <Card className="grid gap-8 p-8 lg:grid-cols-[1fr_auto] lg:items-end lg:p-10">
+            <div>
+              <div className="text-xs font-bold uppercase tracking-[0.22em] text-primary/70">
+                Colaborari
+              </div>
+              <h2 className="mt-4 text-3xl font-black tracking-tight sm:text-4xl">
+                Hai să construim ceva util pentru QA în România
+              </h2>
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">
+                Parteneriate, speakeri la evenimente tech, workshop-uri și
+                colaborări editoriale.
+              </p>
+            </div>
+            <div>
+              <ButtonLink href="/contact" size="lg">
+                Contactează-ne
+                <ArrowRight className="size-4" aria-hidden />
+              </ButtonLink>
+            </div>
+          </Card>
+        </Container>
+      </Section>
+
       {/* ═══════════════════════════════════════════════
           FAQ + FINAL CTA
       ═══════════════════════════════════════════════ */}

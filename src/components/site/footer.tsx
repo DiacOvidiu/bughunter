@@ -9,7 +9,6 @@ const links = [
   { href: "/despre", label: "Despre" },
   { href: "/evenimente", label: "Evenimente" },
   { href: "/blog", label: "Articole" },
-  { href: "/resurse", label: "Resurse" },
   { href: "/contact", label: "Contact" },
 ];
 

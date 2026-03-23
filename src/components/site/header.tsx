@@ -8,7 +8,6 @@ import {
   Newspaper,
   Phone,
   Sparkles,
-  Wrench,
 } from "lucide-react";
 
 import { ButtonLink } from "@/components/ui/button";
@@ -19,7 +18,6 @@ const nav = [
   { href: "/despre", label: "Despre", icon: Sparkles },
   { href: "/evenimente", label: "Evenimente", icon: CalendarDays },
   { href: "/blog", label: "Articole", icon: Newspaper },
-  { href: "/resurse", label: "Resurse", icon: Wrench },
   { href: "/contact", label: "Contact", icon: Phone },
 ];
 

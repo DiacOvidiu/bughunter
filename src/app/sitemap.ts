@@ -5,7 +5,7 @@ import { getAllBlogPosts } from "@/lib/content/blog";
 import { absoluteUrl } from "@/lib/seo";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticRoutes = ["/", "/despre", "/comunitate", "/evenimente", "/blog", "/resurse", "/contact"];
+  const staticRoutes = ["/", "/despre", "/evenimente", "/blog", "/resurse", "/contact"];
 
   const blogPosts = await getAllBlogPosts();
   const events = getAllEvents();

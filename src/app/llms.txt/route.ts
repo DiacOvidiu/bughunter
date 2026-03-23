@@ -30,7 +30,6 @@ ${siteConfig.name} este comunitatea de Quality Assurance din România, dedicată
 - [Blog](${base}/blog): Articole despre QA, testare software și carieră în quality assurance
 - [Evenimente](${base}/evenimente): Meetup-uri, workshop-uri și sesiuni live pentru QA engineers
 - [Resurse](${base}/resurse): Colecție de instrumente, ghiduri și materiale de învățare pentru QA
-- [Comunitate](${base}/comunitate): Informații despre comunitatea Discord și cum poți participa
 - [Contact](${base}/contact): Parteneriate, speakeri și contact direct
 
 ## Articole recente

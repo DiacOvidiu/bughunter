@@ -138,11 +138,13 @@ export default function ResourcesPage() {
                   ))}
                 </div>
                 <ButtonLink
-                  href="/comunitate"
+                  href={siteConfig.discordInviteUrl}
+                  target="_blank"
+                  rel="noreferrer"
                   variant="secondary"
                   className="mt-6 w-full justify-center"
                 >
-                  Vezi cum funcționează Discord-ul
+                  Intră pe Discord
                 </ButtonLink>
               </Card>
             </div>

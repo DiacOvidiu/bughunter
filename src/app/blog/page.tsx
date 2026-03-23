@@ -75,11 +75,16 @@ export default async function BlogIndexPage() {
                 Conținut pentru QA Testing și Quality Engineering
               </h1>
               <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
-                Articole structurate, cu exemple, FAQ și CTA spre comunitate.
+                Articole structurate, cu exemple, FAQ și CTA spre Discord.
                 Scris pentru România, optimizat SEO.
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <ButtonLink href="/comunitate" size="lg">
+                <ButtonLink
+                  href={siteConfig.discordInviteUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  size="lg"
+                >
                   Intră pe Discord
                   <ArrowRight className="size-4" aria-hidden />
                 </ButtonLink>

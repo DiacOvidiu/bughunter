@@ -40,7 +40,7 @@ export default function OpenGraphImage() {
             opacity: 0.8,
           }}
         >
-          Comunitatea QA din România
+          Comunitate QA din România
         </div>
         <div
           style={{

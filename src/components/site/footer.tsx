@@ -7,7 +7,6 @@ import { siteConfig } from "@/lib/site";
 
 const links = [
   { href: "/despre", label: "Despre" },
-  { href: "/comunitate", label: "Discord" },
   { href: "/evenimente", label: "Evenimente" },
   { href: "/blog", label: "Articole" },
   { href: "/resurse", label: "Resurse" },

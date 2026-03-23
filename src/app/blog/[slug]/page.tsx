@@ -153,7 +153,12 @@ export default async function BlogPostPage({
                 {post.meta.description}
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <ButtonLink href="/comunitate" variant="secondary">
+                <ButtonLink
+                  href={siteConfig.discordInviteUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  variant="secondary"
+                >
                   Vezi Discord
                 </ButtonLink>
                 <ButtonLink href="/blog" variant="ghost">
@@ -208,7 +213,9 @@ export default async function BlogPostPage({
                     ))}
                   </ol>
                   <ButtonLink
-                    href="/comunitate"
+                    href={siteConfig.discordInviteUrl}
+                    target="_blank"
+                    rel="noreferrer"
                     className="mt-6 w-full justify-center"
                   >
                     Intră pe Discord

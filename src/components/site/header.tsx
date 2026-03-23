@@ -5,7 +5,6 @@ import { useState } from "react";
 import {
   Bug,
   CalendarDays,
-  MessageSquare,
   Newspaper,
   Phone,
   Sparkles,
@@ -18,7 +17,6 @@ import { siteConfig } from "@/lib/site";
 
 const nav = [
   { href: "/despre", label: "Despre", icon: Sparkles },
-  { href: "/comunitate", label: "Discord", icon: MessageSquare },
   { href: "/evenimente", label: "Evenimente", icon: CalendarDays },
   { href: "/blog", label: "Articole", icon: Newspaper },
   { href: "/resurse", label: "Resurse", icon: Wrench },

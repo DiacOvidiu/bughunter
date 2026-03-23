@@ -20,7 +20,7 @@ import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
-  title: `${siteConfig.name} — Comunitatea QA din România`,
+  title: `${siteConfig.name} — Comunitate QA din România`,
   description:
     "BugHunter este comunitatea QA din România (Discord-first) pentru manual testing, automation și quality engineering. Resurse, articole și evenimente.",
   path: "/",
@@ -61,7 +61,7 @@ export default async function HomePage() {
       <JsonLdScript
         data={webPageJsonLd({
           path: "/",
-          title: `${siteConfig.name} — Comunitatea QA din România`,
+          title: `${siteConfig.name} — Comunitate QA din România`,
           description:
             "BugHunter este comunitatea QA din România (Discord-first) pentru manual testing, automation și quality engineering.",
         })}
@@ -113,7 +113,7 @@ export default async function HomePage() {
               <h1 className="text-5xl font-black tracking-tight sm:text-6xl lg:text-7xl">
                 <span className="text-gradient block">BugHunter</span>
                 <span className="mt-1 block leading-tight text-foreground">
-                  Comunitatea QA
+                  Comunitate QA
                 </span>
                 <span className="block leading-tight text-muted">
                   din România

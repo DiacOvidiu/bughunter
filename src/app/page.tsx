@@ -30,7 +30,7 @@ const faq = [
   {
     question: "Ce trebuie să fac imediat după ce intru?",
     answer:
-      "Intră în #onboarding, alege rolurile, citește regulile și postează o scurtă prezentare în #general. Apoi poți deschide un thread cu prima întrebare în canalul potrivit.",
+      "Intră în #onboarding, citește regulile și postează o scurtă prezentare despre tine pe #about-me. Apoi poți deschide un thread cu prima întrebare în canalul potrivit.",
   },
   {
     question: "Există mentorat?",
@@ -121,9 +121,8 @@ export default async function HomePage() {
               </h1>
 
               <p className="mt-7 max-w-lg text-lg leading-relaxed text-muted">
-                Un spațiu pentru ingineri în testare și toți cei care se ocupă
-                cu calitatea software-ului. Discuții tehnice cu context, resurse
-                curate și conexiuni reale din industrie.
+                Un spațiu pentru Quality Assurance Engineers. Discuții tehnice,
+                resurse curate și conexiuni reale din industrie.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -171,7 +170,7 @@ export default async function HomePage() {
                     "#qa-manual-problems și #qa-automation-problems — ajutor tehnic real",
                     "#interviu și #jobs — pregătire pentru interviuri și oportunități de angajare",
                     "#istqb și #ai-enthusiasm — certificări și AI în testare",
-                    "#success-stories, #bughunting și #meme-land — povești din meserie și umor de QA",
+                    "#success-stories, #bughunting și #meme-land — povești de success și caterinca din belsug",
                   ].map((t) => (
                     <li key={t} className="flex items-start gap-2.5">
                       <CheckCircle2
@@ -189,8 +188,8 @@ export default async function HomePage() {
                     Primii pași
                   </div>
                   <p className="mt-2 text-sm leading-relaxed text-muted">
-                    Intri, alegi rolurile, citești regulile, pui prima întrebare
-                    cu context. Primești răspunsuri mai bune, mai repede.
+                    Intri, citești regulile, pui o întrebare . Primești
+                    răspunsuri, simplu si rapid.
                   </p>
                 </div>
 
@@ -257,7 +256,7 @@ export default async function HomePage() {
                 Hai să construim ceva util pentru QA în România
               </h2>
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">
-                Parteneriate, speaker invitations, workshop-uri și colaborări
+                Parteneriate, training-uri, workshop-uri și colaborări
                 editoriale.
               </p>
             </div>
@@ -292,7 +291,7 @@ export default async function HomePage() {
               <SectionHeader
                 eyebrow="Următorul pas"
                 title="Checklist pentru o întrebare bună"
-                description="Dacă pui întrebarea cu context, primești un răspuns util mai repede."
+                description="Dacă pui întrebarea bine structurată, primești un răspuns util mai repede."
               />
               <Card variant="glow" className="mt-8 p-7">
                 <ul className="grid gap-3 text-sm text-muted">

@@ -5,9 +5,7 @@ import { Container } from "@/components/layout/container";
 import { ButtonLink } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site";
 
-const links = [
-  { href: "/blog", label: "Articole" },
-];
+const links = [{ href: "/blog", label: "Articole" }];
 
 export function SiteFooter() {
   return (
@@ -26,8 +24,8 @@ export function SiteFooter() {
           </div>
           <p className="mt-4 text-sm leading-relaxed text-muted">
             Comunitatea QA din România pentru practică reală, întrebări bune și
-            creștere sănătoasă în carieră. Fără zgomot. Fără bariere inutile. Cu
-            standarde.
+            creștere sănătoasă în carieră. Fără zgomot. Fără politically
+            correctness.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-2">
             <ButtonLink

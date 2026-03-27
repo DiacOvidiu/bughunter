@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 import { SiteFooter } from "@/components/site/footer";
@@ -25,18 +26,6 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   applicationName: siteConfig.name,
-  keywords: [
-    "QA testing România",
-    "comunitate QA",
-    "testare software",
-    "testare manuală",
-    "testare automată",
-    "quality assurance",
-    "quality engineering",
-    "API testing",
-    "carieră QA",
-    "BugHunter",
-  ],
   creator: siteConfig.name,
   publisher: siteConfig.name,
   alternates: {
@@ -89,6 +78,16 @@ export default function RootLayout({
         <SiteHeader />
         <main id="continut">{children}</main>
         <SiteFooter />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-HZP2JCCRXS"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-HZP2JCCRXS');
+        `}</Script>
       </body>
     </html>
   );

@@ -24,8 +24,8 @@ export const metadata = buildMetadata({
 
 export default async function BlogIndexPage() {
   const posts = await getAllBlogPosts();
-  const featured = posts[0];
-  const rest = posts.slice(1);
+  const featured = posts.find((p) => p.isFeatured) ?? posts[0];
+  const rest = posts.filter((p) => p.slug !== featured?.slug);
   return (
     <>
       <JsonLdScript data={blogCollectionJsonLd()} />
@@ -74,11 +74,11 @@ export default async function BlogIndexPage() {
           <div className="mt-8 grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
             <div>
               <h1 className="text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">
-                Conținut pentru QA Testing și Quality Engineering
+                Articole despre QA, Testare Software și Carieră în Quality Engineering
               </h1>
               <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
-                Articole structurate, cu exemple, FAQ și CTA spre Discord.
-                Scris pentru România, optimizat SEO.
+                Ghiduri practice, tutoriale și resurse pentru testeri din România.
+                De la QA Manual la Automation, API și Performance Testing.
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <ButtonLink
@@ -144,32 +144,34 @@ export default async function BlogIndexPage() {
         </Container>
       </section>
 
-      <Section tone="subtle">
-        <Container className="max-w-7xl">
-          <SectionHeader
-            eyebrow="Articole"
-            title="Ultimele articole"
-            description="Scrise pentru practică: exemple, checklist-uri, strategii și carieră."
-          />
-          <div className="mt-10 grid gap-3 lg:grid-cols-3">
-            {rest.map((p) => (
-              <BlogCard
-                key={p.slug}
-                href={`/blog/${p.slug}`}
-                title={p.title}
-                description={p.description}
-                categoryLabel={p.category}
-                readingTime={p.readingTimeText}
-                dateLabel={formatDateShort(p.date)}
-              />
-            ))}
-          </div>
-        </Container>
-      </Section>
+      {rest.length > 0 && (
+        <Section tone="subtle">
+          <Container className="max-w-7xl">
+            <SectionHeader
+              eyebrow="Articole"
+              title="Ultimele articole"
+              description="Scrise pentru practică: exemple, checklist-uri, strategii și carieră."
+            />
+            <div className="mt-10 grid gap-3 lg:grid-cols-3">
+              {rest.map((p) => (
+                <BlogCard
+                  key={p.slug}
+                  href={`/blog/${p.slug}`}
+                  title={p.title}
+                  description={p.description}
+                  categoryLabel={p.category}
+                  readingTime={p.readingTimeText}
+                  dateLabel={formatDateShort(p.date)}
+                />
+              ))}
+            </div>
+          </Container>
+        </Section>
+      )}
 
       <DiscordCTABlock
         title="Vrei să propui un articol?"
-        description="Intră pe Discord și spune tema, publicul țintă și ce problemă rezolvă. Îți dăm feedback pe structură și SEO."
+        description="Intră pe Discord și spune tema, publicul țintă și ce problemă rezolvă."
       />
     </>
   );

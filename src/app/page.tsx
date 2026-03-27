@@ -2,6 +2,7 @@ import { ArrowRight, CheckCircle2, ChevronRight, Zap } from "lucide-react";
 
 import { DiscordCTABlock } from "@/components/blocks/discord-cta";
 import { FaqAccordion } from "@/components/blocks/faq";
+
 import { BlogCard } from "@/components/cards/blog-card";
 import { Container } from "@/components/layout/container";
 import { Section, SectionHeader } from "@/components/layout/section";
@@ -121,8 +122,8 @@ export default async function HomePage() {
               </h1>
 
               <p className="mt-7 max-w-lg text-lg leading-relaxed text-muted">
-                Un spațiu pentru Quality Assurance Engineers. Discuții tehnice,
-                resurse curate și conexiuni reale din industrie.
+                Locul pentru Quality Assurance Engineers. Discuții tehnice,
+                resurse și conexiuni cu membrii din industrie.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">

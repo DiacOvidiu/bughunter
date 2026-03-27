@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/site";
 
 export function DiscordCTABlock({
   title = "Intră pe Discord și cunoaște oameni care chiar testează",
-  description = "Comunitate activă din 2022. Întrebări, feedback, resurse, job talk și sesiuni live. Un loc pentru QA din România, construit pe practică și respect.",
+  description = "Comunitate activă din 2022. Întrebări, feedback, resurse, job talk și sesiuni live.",
 }: {
   title?: string;
   description?: string;

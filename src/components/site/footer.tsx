@@ -23,9 +23,9 @@ export function SiteFooter() {
             {siteConfig.name}
           </div>
           <p className="mt-4 text-sm leading-relaxed text-muted">
-            Comunitatea QA din România pentru practică reală, întrebări bune și
-            creștere sănătoasă în carieră. Fără zgomot. Fără politically
-            correctness.
+            Comunitate de testeri din România — manual testing, automation, API
+            și performance. Discuții tehnice, resurse practice și suport pentru
+            creștere reală în carieră.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-2">
             <ButtonLink

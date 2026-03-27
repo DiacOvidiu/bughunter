@@ -34,6 +34,15 @@ export const blogPost = defineType({
       group: "settings",
     }),
     defineField({
+      name: "isFeatured",
+      title: "Recomandat (articol evidențiat)",
+      type: "boolean",
+      description:
+        "Afișat ca articol recomandat în partea de sus a paginii /blog. Bifează doar pe UN singur articol — dacă mai multe sunt bifate, va fi ales cel mai recent.",
+      initialValue: false,
+      group: "settings",
+    }),
+    defineField({
       name: "category",
       title: "Categorie",
       type: "string",
@@ -146,7 +155,8 @@ export const blogPost = defineType({
         "Primele propoziții care răspund direct la întrebarea principală. Ajută SEO clasic, AEO și GEO — motoarele AI extrag răspunsuri din primele paragrafe.",
       type: "text",
       rows: 4,
-      validation: (r) => r.required(),
+      validation: (r) =>
+        r.required().min(100, "Introducerea trebuie să aibă cel puțin 100 de caractere (2 fraze)").max(600),
       group: "content",
     }),
     defineField({
@@ -212,12 +222,17 @@ export const blogPost = defineType({
               name: "question",
               title: "Întrebare",
               type: "string",
+              validation: (r) =>
+                r
+                  .required()
+                  .regex(/\?$/, { name: "question-mark", invert: false }, "Întrebarea trebuie să se termine cu ?"),
             }),
             defineField({
               name: "answer",
               title: "Răspuns",
               type: "text",
               rows: 3,
+              validation: (r) => r.required().min(30),
             }),
           ],
           preview: {

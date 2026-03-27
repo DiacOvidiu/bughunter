@@ -55,7 +55,7 @@ export async function generateMetadata({
     description: post.meta.description,
     path: `/blog/${post.slug}`,
     ogType: "article",
-    keywords: post.meta.tags?.length ? post.meta.tags : undefined,
+
   });
 }
 

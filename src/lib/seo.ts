@@ -14,14 +14,12 @@ export function buildMetadata({
   path,
   ogImagePath = "/opengraph-image",
   ogType = "website",
-  keywords,
 }: {
   title: string;
   description: string;
   path: string;
   ogImagePath?: string;
   ogType?: "website" | "article";
-  keywords?: string[];
 }): Metadata {
   const safeDescription =
     description.trim().length > 155
@@ -33,7 +31,7 @@ export function buildMetadata({
   return {
     title: { absolute: title },
     description: safeDescription,
-    ...(keywords?.length ? { keywords } : {}),
+
     alternates: { canonical: url },
     openGraph: {
       type: ogType,

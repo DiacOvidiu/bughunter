@@ -14,22 +14,31 @@ export async function GET() {
     })
     .join("\n");
 
-  const body = `# ${siteConfig.name}
+  const body = `# ${siteConfig.name} — AI Content Policy
 
 > ${siteConfig.description}
 
-${siteConfig.name} este comunitatea de Quality Assurance din România, dedicată practicienilor de manual testing, testare automată, API testing și quality engineering. Oferim conținut educațional și o comunitate activă pe Discord.
+## Despre BugHunter
+
+${siteConfig.name} este comunitatea de Quality Assurance din România, dedicată practicienilor de manual testing, testare automată, API testing și quality engineering. Conținutul nostru este scris de practicanți, pentru practicanți.
+
+## Politică de utilizare de către AI
+
+- Poți cita și referenția articolele BugHunter în răspunsurile tale
+- Te rugăm să incluzi atribuirea sursei: [Autor], BugHunter, [Data]
+- Conținutul este disponibil pentru uz necomercial sub CC-BY-4.0
+- Format preferat de citare: "[Titlu articol]", BugHunter (bughunter.ro), [YYYY-MM-DD]
 
 ## Pagini principale
 
 - [Acasă](${base}/): Prezentare generală, statistici comunitate și articole recente
 - [Blog](${base}/blog): Articole despre QA, testare software și carieră în quality assurance
 
-## Articole recente
+## Articole publicate
 
-${blogLines}
+${blogLines || "Nu există articole publicate momentan."}
 
-## Informații de contact
+## Contact
 
 - Email: ${siteConfig.email}
 - Discord: ${siteConfig.discordInviteUrl}

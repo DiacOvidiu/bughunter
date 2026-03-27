@@ -30,6 +30,7 @@ export type BlogPostListItem = {
   category: BlogCategory;
   tags: string[];
   readingTimeText: string;
+  isFeatured: boolean;
 };
 
 // Type returned by Sanity queries (used in queries.ts)

@@ -16,9 +16,10 @@ export async function fetchAllBlogPosts(): Promise<BlogPostListItem[]> {
       tags?: string[];
       intro?: string;
       summary?: string[];
+      isFeatured?: boolean;
     }>
   >(
-    `*[_type == "blogPost" && isPublished == true] | order(date desc) {
+    `*[_type == "blogPost" && isPublished == true && !(_id in path("drafts.**"))] | order(date desc) {
       "slug": slug.current,
       title,
       seoTitle,
@@ -29,7 +30,8 @@ export async function fetchAllBlogPosts(): Promise<BlogPostListItem[]> {
       category,
       "tags": coalesce(tags, []),
       intro,
-      "summary": coalesce(summary, [])
+      "summary": coalesce(summary, []),
+      isFeatured
     }`
   );
 
@@ -43,12 +45,13 @@ export async function fetchAllBlogPosts(): Promise<BlogPostListItem[]> {
     category: p.category as BlogCategory,
     tags: p.tags ?? [],
     readingTimeText: estimateReadingTime(p.intro, p.summary),
+    isFeatured: p.isFeatured ?? false,
   }));
 }
 
 export async function fetchBlogPostBySlug(slug: string): Promise<SanityBlogPost | null> {
   return client.fetch<SanityBlogPost | null>(
-    `*[_type == "blogPost" && slug.current == $slug && isPublished == true][0] {
+    `*[_type == "blogPost" && slug.current == $slug && isPublished == true && !(_id in path("drafts.**"))][0] {
       "slug": slug.current,
       title,
       h1,

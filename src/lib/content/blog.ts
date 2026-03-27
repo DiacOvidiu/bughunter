@@ -1,14 +1,7 @@
-import fs from "node:fs/promises";
-import path from "node:path";
-
-import matter from "gray-matter";
-import readingTime from "reading-time";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeSlug from "rehype-slug";
-import remarkGfm from "remark-gfm";
-import { compileMDX } from "next-mdx-remote/rsc";
+import type { PortableTextBlock } from "@portabletext/react";
 
 import { slugify } from "@/lib/slug";
+import { fetchAllBlogPosts, fetchBlogPostBySlug } from "@/sanity/queries";
 
 export const blogCategories = [
   "QA Manual",
@@ -33,10 +26,7 @@ export type BlogPostFrontmatter = {
   date: string;
   category: BlogCategory;
   tags?: string[];
-  author?: {
-    name: string;
-    role: string;
-  };
+  author?: { name: string; role: string };
   internalLinks?: Array<{ href: string; label: string }>;
   faq?: BlogFaqItem[];
 };
@@ -52,103 +42,78 @@ export type BlogPostListItem = {
   readingTimeText: string;
 };
 
-const contentDir = path.join(process.cwd(), "src", "content", "blog");
+// Type returned by Sanity queries (used in queries.ts)
+export type SanityBlogPost = {
+  slug: string;
+  title: string;
+  seoTitle?: string;
+  description: string;
+  date: string;
+  category: string;
+  tags?: string[];
+  author?: { name: string; role: string };
+  internalLinks?: Array<{ label: string; href: string }>;
+  faq?: BlogFaqItem[];
+  body: PortableTextBlock[];
+};
 
-async function readAllMdxFiles() {
-  const entries = await fs.readdir(contentDir, { withFileTypes: true });
-  return entries
-    .filter((e) => e.isFile() && e.name.endsWith(".mdx"))
-    .map((e) => path.join(contentDir, e.name));
-}
+export type TocItem = { id: string; title: string; level: 2 | 3 };
 
-function parseToc(mdx: string) {
-  const lines = mdx.split("\n");
-  const items: Array<{ id: string; title: string; level: 2 | 3 }> = [];
-
-  for (const line of lines) {
-    const match = /^(#{2,3})\s+(.+?)\s*$/.exec(line);
-    if (!match) continue;
-    const level = match[1].length as 2 | 3;
-    const title = match[2].replace(/\s+#*$/, "").trim();
-    const id = slugify(title);
-    items.push({ id, title, level });
-  }
-
-  return items;
+function parseTocFromBody(body: PortableTextBlock[]): TocItem[] {
+  return body
+    .filter(
+      (b) =>
+        b._type === "block" &&
+        (b.style === "h2" || b.style === "h3")
+    )
+    .map((b) => {
+      const title = ((b.children ?? []) as Array<{ text?: string }>)
+        .map((c) => c.text ?? "")
+        .join("");
+      return {
+        id: slugify(title),
+        title,
+        level: (b.style === "h2" ? 2 : 3) as 2 | 3,
+      };
+    });
 }
 
 export async function getAllBlogPosts(): Promise<BlogPostListItem[]> {
-  const files = await readAllMdxFiles();
-  const items = await Promise.all(
-    files.map(async (filePath) => {
-      const raw = await fs.readFile(filePath, "utf8");
-      const parsed = matter(raw);
-      const fm = parsed.data as Partial<BlogPostFrontmatter>;
-
-      const fileSlug = path.basename(filePath).replace(/\.mdx$/, "");
-      const slug = typeof fm.title === "string" ? fileSlug : fileSlug;
-
-      const rt = readingTime(parsed.content);
-
-      return {
-        slug,
-        title: String(fm.title ?? fileSlug),
-        seoTitle: String(fm.seoTitle ?? fm.title ?? fileSlug),
-        description: String(fm.description ?? ""),
-        date: String(fm.date ?? ""),
-        category: (fm.category ?? "Best Practices") as BlogCategory,
-        tags: Array.isArray(fm.tags) ? fm.tags.map(String) : [],
-        readingTimeText: `${Math.max(1, Math.round(rt.minutes))} min`,
-      } satisfies BlogPostListItem;
-    }),
-  );
-
-  return items.sort((a, b) => (a.date < b.date ? 1 : -1));
+  return fetchAllBlogPosts();
 }
 
 export async function getBlogPostBySlug(slug: string) {
-  const filePath = path.join(contentDir, `${slug}.mdx`);
-  const raw = await fs.readFile(filePath, "utf8");
+  const post = await fetchBlogPostBySlug(slug);
+  if (!post) return null;
 
-  const { content, frontmatter } = await compileMDX<BlogPostFrontmatter>({
-    source: raw,
-    options: {
-      parseFrontmatter: true,
-      mdxOptions: {
-        remarkPlugins: [remarkGfm],
-        rehypePlugins: [
-          rehypeSlug,
-          [
-            rehypeAutolinkHeadings,
-            {
-              behavior: "append",
-              properties: {
-                className:
-                  "ml-2 inline-flex opacity-0 group-hover:opacity-100 transition-opacity text-muted",
-                ariaHidden: "true",
-                tabIndex: -1,
-              },
-            },
-          ],
-        ],
-      },
-    },
-  });
-
-  const parsed = matter(raw);
-  const rt = readingTime(parsed.content);
-  const toc = parseToc(parsed.content);
+  const toc = parseTocFromBody(post.body ?? []);
 
   return {
-    slug,
-    content,
+    slug: post.slug,
+    body: post.body ?? [],
     toc,
     meta: {
-      ...frontmatter,
-      readingTimeText: `${Math.max(1, Math.round(rt.minutes))} min`,
-      tags: Array.isArray(frontmatter.tags) ? frontmatter.tags : [],
-      internalLinks: Array.isArray(frontmatter.internalLinks) ? frontmatter.internalLinks : [],
-      faq: Array.isArray(frontmatter.faq) ? frontmatter.faq : [],
+      title: post.title,
+      seoTitle: post.seoTitle ?? post.title,
+      description: post.description,
+      date: post.date,
+      category: post.category as BlogCategory,
+      tags: post.tags ?? [],
+      author: post.author,
+      internalLinks: post.internalLinks ?? [],
+      faq: post.faq ?? [],
+      readingTimeText: calcReadingTime(post.body ?? []),
     },
   };
+}
+
+function calcReadingTime(body: PortableTextBlock[]): string {
+  const text = body
+    .filter((b) => b._type === "block" && Array.isArray(b.children))
+    .flatMap((b) =>
+      ((b.children ?? []) as Array<{ text?: string }>).map((c) => c.text ?? "")
+    )
+    .join(" ");
+  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  return `${Math.max(1, Math.round(words / 200))} min`;
 }

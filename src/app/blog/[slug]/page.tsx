@@ -6,6 +6,7 @@ import { DiscordCTABlock } from "@/components/blocks/discord-cta";
 import { FaqAccordion } from "@/components/blocks/faq";
 import { Breadcrumbs } from "@/components/site/breadcrumbs";
 import { AuthorBlock } from "@/components/content/author-block";
+import { BlogPortableText } from "@/components/content/portable-text";
 import { Prose } from "@/components/content/prose";
 import { JsonLdScript } from "@/components/seo/jsonld";
 import { Container } from "@/components/layout/container";
@@ -166,7 +167,9 @@ export default async function BlogPostPage({
                 </ButtonLink>
               </div>
 
-              <Prose className="mt-10">{post.content}</Prose>
+              <Prose className="mt-10">
+                <BlogPortableText value={post.body} />
+              </Prose>
 
               {post.meta.internalLinks.length ? (
                 <div className="mt-10 rounded-2xl bg-card p-7 ring-1 ring-border shadow-(--shadow)">

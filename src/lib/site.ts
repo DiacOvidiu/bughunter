@@ -2,10 +2,10 @@ export const siteConfig = {
   name: "BugHunter",
   description:
     "Comunitatea QA din România pentru manual testing, automation, quality engineering și creștere în carieră.",
-  url: "https://bughunter.ro",
+  url: "https://www.bughunter.ro",
   locale: "ro_RO",
   discordInviteUrl: "https://discord.gg/JHRa9eUqp5",
-  email: "hello@bughunter.ro",
+  email: "antreprenor@danpopescu.ro",
   socials: {
     linkedin: "https://www.linkedin.com/",
     github: "https://github.com/",

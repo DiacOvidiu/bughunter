@@ -55,6 +55,9 @@ export const metadata: Metadata = {
     title: `${siteConfig.name} — Comunitatea QA din România`,
     description: siteConfig.description,
   },
+  verification: {
+    google: "00DFEXoOYl_s_HH0EfYGu1UPtcq6hrYVawrdj1Sdkww",
+  },
   robots: {
     index: true,
     follow: true,

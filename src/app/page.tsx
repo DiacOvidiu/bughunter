@@ -216,34 +216,36 @@ export default async function HomePage() {
       {/* ═══════════════════════════════════════════════
           BLOG
       ═══════════════════════════════════════════════ */}
-      <Section>
-        <Container className="max-w-7xl">
-          <SectionHeader
-            eyebrow="Articole"
-            title="Articole despre QA scrise pentru practică"
-            description="Nu teorie generală — subiecte concrete, cu exemple din proiecte reale și link spre comunitate."
-          />
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {posts.map((p) => (
-              <BlogCard
-                key={p.slug}
-                href={`/blog/${p.slug}`}
-                title={p.title}
-                description={p.description}
-                categoryLabel={p.category}
-                readingTime={p.readingTime}
-                dateLabel={p.dateLabel}
-              />
-            ))}
-          </div>
-          <div className="mt-8">
-            <ButtonLink href="/blog" variant="secondary">
-              Toate articolele
-              <ArrowRight className="size-4" aria-hidden />
-            </ButtonLink>
-          </div>
-        </Container>
-      </Section>
+      {posts.length > 0 ? (
+        <Section>
+          <Container className="max-w-7xl">
+            <SectionHeader
+              eyebrow="Articole"
+              title="Articole despre QA scrise pentru practică"
+              description="Nu teorie generală — subiecte concrete, cu exemple din proiecte reale și link spre comunitate."
+            />
+            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {posts.map((p) => (
+                <BlogCard
+                  key={p.slug}
+                  href={`/blog/${p.slug}`}
+                  title={p.title}
+                  description={p.description}
+                  categoryLabel={p.category}
+                  readingTime={p.readingTime}
+                  dateLabel={p.dateLabel}
+                />
+              ))}
+            </div>
+            <div className="mt-8">
+              <ButtonLink href="/blog" variant="secondary">
+                Toate articolele
+                <ArrowRight className="size-4" aria-hidden />
+              </ButtonLink>
+            </div>
+          </Container>
+        </Section>
+      ) : null}
 
       <Section tone="subtle">
         <Container className="max-w-7xl">

@@ -9,6 +9,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
+        disallow: "/studio",
       },
       // Explicitly allow AI/LLM crawlers for AI Overview and LLM indexing
       {

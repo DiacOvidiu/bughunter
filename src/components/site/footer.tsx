@@ -68,12 +68,17 @@ export function SiteFooter() {
               <br />
               Toate drepturile rezervate.
             </p>
-            <p className="mt-2">
-              Dezvoltat de{" "}
-              <span className="underline transition-colors hover:text-muted">
-                comunitatea de QA din România
-              </span>
-            </p>
+           <p className="mt-2">
+  Dezvoltat de{" "}
+  <a
+    href="https://www.diacovidiu.ro"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="underline transition-colors hover:text-muted"
+  >
+    Diac Ovidiu
+  </a>
+</p>
           </div>
         </div>
       </Container>

@@ -73,6 +73,8 @@ export default async function BlogPostPage({
   }
   if (!post) return notFound();
 
+  const hasStructured = !!(post.intro || post.mainAnswer?.length);
+
   return (
     <>
       <section className="relative overflow-hidden pb-16 pt-16 sm:pt-20 lg:pt-28">
@@ -136,6 +138,7 @@ export default async function BlogPostPage({
           />
 
           <div className="mt-6 grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+            {/* ── MAIN CONTENT ─────────────────────────────────────────── */}
             <div>
               <div className="flex flex-wrap items-center gap-2">
                 <Badge tone="primary">
@@ -149,13 +152,20 @@ export default async function BlogPostPage({
                 <div className="text-xs text-muted-2">
                   {formatDateShort(post.meta.date)}
                 </div>
+                {post.meta.updatedAt ? (
+                  <div className="text-xs text-muted-2">
+                    · actualizat {formatDateShort(post.meta.updatedAt)}
+                  </div>
+                ) : null}
               </div>
+
               <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-5xl">
-                {post.meta.title}
+                {post.meta.h1}
               </h1>
               <p className="mt-4 text-base leading-relaxed text-muted">
                 {post.meta.description}
               </p>
+
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <ButtonLink
                   href={siteConfig.discordInviteUrl}
@@ -171,11 +181,157 @@ export default async function BlogPostPage({
               </div>
 
               <Prose className="mt-10">
-                <BlogPortableText value={post.body} />
+                {hasStructured ? (
+                  <>
+                    {/* ① Introducere */}
+                    {post.intro ? (
+                      <p className="lead">{post.intro}</p>
+                    ) : null}
+
+                    {/* ② Pe scurt */}
+                    {post.summary && post.summary.length > 0 ? (
+                      <div
+                        id="pe-scurt"
+                        className="not-prose my-6 rounded-2xl bg-card p-6 ring-1 ring-border shadow-(--shadow)"
+                      >
+                        <div className="mb-3 text-sm font-semibold tracking-tight">
+                          Pe scurt
+                        </div>
+                        <ul className="grid gap-1.5 text-sm text-muted">
+                          {post.summary.map((item, i) => (
+                            <li key={i} className="flex gap-2">
+                              <span className="mt-0.5 text-primary" aria-hidden>
+                                ✓
+                              </span>
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : null}
+
+                    {/* ③ Ce trebuie să știi înainte */}
+                    {post.prerequisites && post.prerequisites.length > 0 ? (
+                      <section>
+                        <h2 id="ce-trebuie-sa-stii">
+                          Ce trebuie să știi înainte
+                        </h2>
+                        <BlogPortableText value={post.prerequisites} />
+                      </section>
+                    ) : null}
+
+                    {/* ④ Răspunsul principal */}
+                    {post.mainAnswer && post.mainAnswer.length > 0 ? (
+                      <section>
+                        <h2 id="raspunsul-principal">Răspunsul principal</h2>
+                        <BlogPortableText value={post.mainAnswer} />
+                      </section>
+                    ) : null}
+
+                    {/* ⑤ Pași / criterii / metodă */}
+                    {post.steps && post.steps.length > 0 ? (
+                      <section>
+                        <h2 id="pasi-criterii">Pași / criterii / metodă</h2>
+                        <BlogPortableText value={post.steps} />
+                      </section>
+                    ) : null}
+
+                    {/* ⑥ Exemple concrete */}
+                    {post.examples && post.examples.length > 0 ? (
+                      <section>
+                        <h2 id="exemple">Exemple concrete</h2>
+                        <BlogPortableText value={post.examples} />
+                      </section>
+                    ) : null}
+
+                    {/* ⑦ Greșeli frecvente */}
+                    {post.commonMistakes && post.commonMistakes.length > 0 ? (
+                      <section>
+                        <h2 id="greseli">Greșeli frecvente</h2>
+                        <BlogPortableText value={post.commonMistakes} />
+                      </section>
+                    ) : null}
+
+                    {/* ⑧ FAQ — inline */}
+                    {post.meta.faq.length > 0 ? (
+                      <section>
+                        <h2 id="faq">Întrebări frecvente</h2>
+                        <div className="not-prose mt-4">
+                          <FaqAccordion items={post.meta.faq} />
+                        </div>
+                      </section>
+                    ) : null}
+
+                    {/* ⑨ Concluzie */}
+                    {post.conclusion && post.conclusion.length > 0 ? (
+                      <section>
+                        <h2 id="concluzie">Concluzie</h2>
+                        <BlogPortableText value={post.conclusion} />
+                      </section>
+                    ) : null}
+                  </>
+                ) : (
+                  /* Legacy: render body for older articles */
+                  <BlogPortableText value={post.body ?? []} />
+                )}
               </Prose>
 
+              {/* Autor detaliat (bio + reviewed by) */}
+              {(post.meta.author?.bio || post.meta.reviewedBy) ? (
+                <div className="mt-10 rounded-2xl bg-card p-7 ring-1 ring-border shadow-(--shadow) text-sm">
+                  {post.meta.author?.bio ? (
+                    <div>
+                      <span className="font-semibold">
+                        {post.meta.author.name}
+                      </span>
+                      {post.meta.author.role ? (
+                        <span className="text-muted-2">
+                          {" "}
+                          · {post.meta.author.role}
+                        </span>
+                      ) : null}
+                      <p className="mt-1 text-muted leading-relaxed">
+                        {post.meta.author.bio}
+                      </p>
+                    </div>
+                  ) : null}
+                  {post.meta.reviewedBy ? (
+                    <p className="mt-3 text-muted-2">
+                      Revizuit tehnic de:{" "}
+                      <span className="text-foreground font-medium">
+                        {post.meta.reviewedBy}
+                      </span>
+                    </p>
+                  ) : null}
+                </div>
+              ) : null}
+
+              {/* Surse */}
+              {post.meta.sources.length > 0 ? (
+                <div className="mt-4 rounded-2xl bg-card p-7 ring-1 ring-border shadow-(--shadow)">
+                  <div className="text-sm font-semibold tracking-tight">
+                    Surse
+                  </div>
+                  <ul className="mt-3 grid gap-1.5 text-sm text-muted">
+                    {post.meta.sources.map((s, i) => (
+                      <li key={i}>
+                        <a
+                          href={s.url}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          className="hover:text-foreground underline underline-offset-2"
+                        >
+                          {s.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              {/* Linkuri interne */}
               {post.meta.internalLinks.length ? (
-                <div className="mt-10 rounded-2xl bg-card p-7 ring-1 ring-border shadow-(--shadow)">
+                <div className="mt-4 rounded-2xl bg-card p-7 ring-1 ring-border shadow-(--shadow)">
                   <div className="text-sm font-semibold tracking-tight">
                     Vezi și
                   </div>
@@ -192,6 +348,7 @@ export default async function BlogPostPage({
               ) : null}
             </div>
 
+            {/* ── SIDEBAR ──────────────────────────────────────────────── */}
             <div className="lg:sticky lg:top-24">
               {post.meta.author ? (
                 <div className="mb-3">
@@ -230,7 +387,8 @@ export default async function BlogPostPage({
                 </div>
               ) : null}
 
-              {post.meta.faq.length ? (
+              {/* FAQ in sidebar only for legacy articles without structured content */}
+              {!hasStructured && post.meta.faq.length ? (
                 <div className="mt-3 rounded-2xl bg-card p-7 ring-1 ring-border shadow-(--shadow)">
                   <div className="text-sm font-semibold tracking-tight">
                     FAQ

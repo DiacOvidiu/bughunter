@@ -1,19 +1,35 @@
 import { client } from "./client";
-import type { PortableTextBlock } from "@portabletext/react";
 
 import type { BlogCategory, BlogPostListItem, SanityBlogPost } from "@/lib/content/blog";
 
 export async function fetchAllBlogPosts(): Promise<BlogPostListItem[]> {
-  const posts = await client.fetch<SanityBlogPost[]>(
+  const posts = await client.fetch<
+    Array<{
+      slug: string;
+      title: string;
+      seoTitle?: string;
+      description: string;
+      date: string;
+      updatedAt?: string;
+      _updatedAt: string;
+      category: string;
+      tags?: string[];
+      intro?: string;
+      summary?: string[];
+    }>
+  >(
     `*[_type == "blogPost" && isPublished == true] | order(date desc) {
       "slug": slug.current,
       title,
       seoTitle,
       description,
       date,
+      updatedAt,
+      _updatedAt,
       category,
       "tags": coalesce(tags, []),
-      body
+      intro,
+      "summary": coalesce(summary, [])
     }`
   );
 
@@ -23,9 +39,10 @@ export async function fetchAllBlogPosts(): Promise<BlogPostListItem[]> {
     seoTitle: p.seoTitle ?? p.title,
     description: p.description,
     date: p.date,
+    updatedAt: p.updatedAt ?? p._updatedAt,
     category: p.category as BlogCategory,
     tags: p.tags ?? [],
-    readingTimeText: calcReadingTime(p.body ?? []),
+    readingTimeText: estimateReadingTime(p.intro, p.summary),
   }));
 }
 
@@ -34,27 +51,37 @@ export async function fetchBlogPostBySlug(slug: string): Promise<SanityBlogPost 
     `*[_type == "blogPost" && slug.current == $slug && isPublished == true][0] {
       "slug": slug.current,
       title,
+      h1,
       seoTitle,
       description,
       date,
+      updatedAt,
       category,
       "tags": coalesce(tags, []),
       author,
+      reviewedBy,
       "internalLinks": coalesce(internalLinks, []),
+      "sources": coalesce(sources, []),
       "faq": coalesce(faq, []),
+      intro,
+      "summary": coalesce(summary, []),
+      prerequisites,
+      mainAnswer,
+      steps,
+      examples,
+      commonMistakes,
+      conclusion,
       body
     }`,
     { slug }
   );
 }
 
-function calcReadingTime(body: PortableTextBlock[]): string {
-  const text = body
-    .filter((b) => b._type === "block" && Array.isArray(b.children))
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    .flatMap((b) => b.children.map((c: any) => c.text ?? ""))
-    .join(" ");
-  const words = text.trim().split(/\s+/).filter(Boolean).length;
-  const minutes = Math.max(1, Math.round(words / 200));
-  return `${minutes} min`;
+/** Rough reading time estimate for list items (intro + summary ≈ 15–20% of article). */
+function estimateReadingTime(intro?: string, summary?: string[]): string {
+  let words = 0;
+  if (intro) words += intro.trim().split(/\s+/).filter(Boolean).length;
+  if (summary) words += summary.join(" ").trim().split(/\s+/).filter(Boolean).length;
+  const estimated = words > 0 ? words * 6 : 300;
+  return `${Math.max(2, Math.round(estimated / 200))} min`;
 }

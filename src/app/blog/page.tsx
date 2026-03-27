@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import { ArrowRight, Tag } from "lucide-react";
 
 import { DiscordCTABlock } from "@/components/blocks/discord-cta";

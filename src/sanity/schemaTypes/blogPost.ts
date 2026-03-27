@@ -225,7 +225,7 @@ export const blogPost = defineType({
               validation: (r) =>
                 r
                   .required()
-                  .regex(/\?$/, { name: "question-mark", invert: false }, "Întrebarea trebuie să se termine cu ?"),
+                  .regex(/\?$/, "Întrebarea trebuie să se termine cu ?"),
             }),
             defineField({
               name: "answer",

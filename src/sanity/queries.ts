@@ -5,7 +5,7 @@ import type { BlogCategory, BlogPostListItem, SanityBlogPost } from "@/lib/conte
 
 export async function fetchAllBlogPosts(): Promise<BlogPostListItem[]> {
   const posts = await client.fetch<SanityBlogPost[]>(
-    `*[_type == "blogPost"] | order(date desc) {
+    `*[_type == "blogPost" && isPublished == true] | order(date desc) {
       "slug": slug.current,
       title,
       seoTitle,
@@ -31,7 +31,7 @@ export async function fetchAllBlogPosts(): Promise<BlogPostListItem[]> {
 
 export async function fetchBlogPostBySlug(slug: string): Promise<SanityBlogPost | null> {
   return client.fetch<SanityBlogPost | null>(
-    `*[_type == "blogPost" && slug.current == $slug][0] {
+    `*[_type == "blogPost" && slug.current == $slug && isPublished == true][0] {
       "slug": slug.current,
       title,
       seoTitle,

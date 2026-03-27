@@ -18,6 +18,13 @@ export const blogPost = defineType({
   type: "document",
   fields: [
     defineField({
+      name: "isPublished",
+      title: "Publicat pe site",
+      type: "boolean",
+      description: "Bifează pentru a face articolul vizibil pe www.bughunter.ro/blog",
+      initialValue: false,
+    }),
+    defineField({
       name: "title",
       title: "Titlu",
       type: "string",

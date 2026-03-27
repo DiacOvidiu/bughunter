@@ -156,7 +156,7 @@ export const blogPost = defineType({
       type: "text",
       rows: 4,
       validation: (r) =>
-        r.required().min(100, "Introducerea trebuie să aibă cel puțin 100 de caractere (2 fraze)").max(600),
+        r.required().min(100).max(600),
       group: "content",
     }),
     defineField({

@@ -112,14 +112,14 @@ export default async function HomePage() {
             {/* Left – copy */}
             <div>
               <h1 className="text-5xl font-black tracking-tight sm:text-6xl lg:text-7xl">
-                <span className="text-gradient block">BugHunter</span>
-                <span className="mt-1 block leading-tight text-foreground">
-                  Comunitate QA
-                </span>
-                <span className="block leading-tight text-muted">
-                  din România
-                </span>
-              </h1>
+  <span className="block leading-tight text-foreground">
+    Comunitatea QA din România
+  </span>
+  <span className="sr-only"> - </span>
+  <span className="text-gradient mt-1 block">
+    BugHunter
+  </span>
+</h1>
 
               <p className="mt-7 max-w-lg text-lg leading-relaxed text-muted">
                 Locul pentru Quality Assurance Engineers. Discuții tehnice,

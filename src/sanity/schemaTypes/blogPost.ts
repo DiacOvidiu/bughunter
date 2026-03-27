@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { PublishToggle } from "../components/PublishToggle";
 
 const categories = [
   "QA Manual",
@@ -32,6 +33,7 @@ export const blogPost = defineType({
         "Bifează pentru a face articolul vizibil pe www.bughunter.ro/blog",
       initialValue: false,
       group: "settings",
+      components: { input: PublishToggle },
     }),
     defineField({
       name: "isFeatured",

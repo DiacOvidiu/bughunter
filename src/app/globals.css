@@ -79,6 +79,12 @@
 @keyframes border-spin {
   to { --angle: 360deg; }
 }
+@keyframes bokeh-breathe {
+  0%   { transform: scale(1)     translate(0,    0);    opacity: 0.88; }
+  35%  { transform: scale(1.04)  translate(-8px, -12px); opacity: 1;   }
+  70%  { transform: scale(1.02)  translate(10px,  -6px);  opacity: 0.94; }
+  100% { transform: scale(1.06)  translate(-4px,  14px);  opacity: 0.85; }
+}
 
 /* ── Resets ── */
 * { min-width: 0; }
@@ -101,17 +107,37 @@ html {
 /* ── Body ── */
 body {
   background-color: var(--background);
-  /* Large radial glows that give depth without hiding card boundaries */
-  background-image:
-    radial-gradient(ellipse 1100px 650px at 2%  -5%,  rgba(99, 102, 241, 0.22), transparent 58%),
-    radial-gradient(ellipse  900px 600px at 98%  0%,  rgba(34, 211, 238, 0.15), transparent 55%),
-    radial-gradient(ellipse  700px 500px at 75% 98%,  rgba(99, 102, 241, 0.12), transparent 55%);
   color: var(--foreground);
   font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
 }
 
-/* Noise grain overlay for premium depth */
+/* ── Bokeh background — toate orb-urile, GPU-composited, animat ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+  background-image:
+    radial-gradient(circle 42vmax at  7% 13%, rgba(120, 30,  210, 0.62), transparent 65%),
+    radial-gradient(circle 40vmax at 94%  7%, rgba(20,  45,  185, 0.54), transparent 63%),
+    radial-gradient(circle 14vmax at 34% 48%, rgba(28, 125, 215, 0.38), transparent 56%),
+    radial-gradient(circle 11vmax at 52% 41%, rgba(48, 158, 232, 0.30), transparent 52%),
+    radial-gradient(circle 27vmax at 43% 80%, rgba(38,  78,  218, 0.46), transparent 63%),
+    radial-gradient(circle 36vmax at 83% 90%, rgba(75,  50,  215, 0.56), transparent 63%),
+    radial-gradient(circle 13vmax at 76% 77%, rgba(95,  48,  228, 0.42), transparent 56%),
+    radial-gradient(circle 24vmax at  4% 91%, rgba(110, 20,  180, 0.50), transparent 63%);
+  animation: bokeh-breathe 22s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none; }
+}
+
+/* ── Noise grain overlay for premium depth ── */
 body::after {
   content: '';
   position: fixed;

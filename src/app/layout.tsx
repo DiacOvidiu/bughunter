@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
+import { BackToTop } from "@/components/site/back-to-top";
 import { SiteFooter } from "@/components/site/footer";
 import { SiteHeader } from "@/components/site/header";
 import { SkipLink } from "@/components/site/skip-link";
@@ -78,6 +79,7 @@ export default function RootLayout({
         <SiteHeader />
         <main id="continut">{children}</main>
         <SiteFooter />
+        <BackToTop />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-HZP2JCCRXS"
           strategy="afterInteractive"

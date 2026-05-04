@@ -129,18 +129,18 @@ export default async function BlogPostPage({
           {post.meta.faq.length ? (
             <JsonLdScript data={faqPageJsonLd(post.meta.faq)} />
           ) : null}
-          <Breadcrumbs
-            items={[
-              { href: "/", label: "Acasă" },
-              { href: "/blog", label: "Articole" },
-              { href: `/blog/${post.slug}`, label: post.meta.title },
-            ]}
-          />
-
-          <div className="mt-6 grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+          <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
             {/* ── MAIN CONTENT ─────────────────────────────────────────── */}
             <div>
-              <div className="flex flex-wrap items-center gap-2">
+              <Breadcrumbs
+                items={[
+                  { href: "/", label: "Acasă" },
+                  { href: "/blog", label: "Articole" },
+                  { href: `/blog/${post.slug}`, label: post.meta.title },
+                ]}
+              />
+
+              <div className="mt-6 flex flex-wrap items-center gap-2">
                 <Badge tone="primary">
                   <Tag className="size-3.5" aria-hidden />
                   {post.meta.category}

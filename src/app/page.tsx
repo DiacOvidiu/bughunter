@@ -36,7 +36,7 @@ const faq = [
   {
     question: "Există mentorat?",
     answer:
-      "Da: feedback pe portofoliu, ajutor cu CV-ul, direcții clare de învățare și sesiuni tematice. Nu promitem mentorat individual pentru toți, dar ajutor real găsești.",
+      "Da: feedback pe portofoliu, ajutor cu CV-ul, direcții clare de învățare și sesiuni tematice. Sprijinul vine din comunitate, iar mentoratul individual poate apărea, dar nu este garantat.",
   },
   {
     question: "Ce face BugHunter diferit față de alte comunități?",
@@ -112,14 +112,12 @@ export default async function HomePage() {
             {/* Left – copy */}
             <div>
               <h1 className="text-5xl font-black tracking-tight sm:text-6xl lg:text-7xl">
-  <span className="block leading-tight text-foreground">
-    Comunitatea QA din România
-  </span>
-  <span className="sr-only"> - </span>
-  <span className="text-gradient mt-1 block">
-    BugHunter
-  </span>
-</h1>
+                <span className="block leading-tight text-foreground">
+                  Comunitatea QA din România
+                </span>
+                <span className="sr-only"> - </span>
+                <span className="text-gradient mt-1 block">BugHunter</span>
+              </h1>
 
               <p className="mt-7 max-w-lg text-lg leading-relaxed text-muted">
                 Locul pentru Quality Assurance Engineers. Discuții tehnice,
@@ -171,7 +169,7 @@ export default async function HomePage() {
                     "#qa-manual-problems și #qa-automation-problems — ajutor tehnic real",
                     "#interviu și #jobs — pregătire pentru interviuri și oportunități de angajare",
                     "#istqb și #ai-enthusiasm — certificări și AI în testare",
-                    "#success-stories, #bughunting și #meme-land — povești de success și caterinca din belsug",
+                    "#succes-stories, #bughunting și #meme-land — povești de succes și caterincă din belșug",
                   ].map((t) => (
                     <li key={t} className="flex items-start gap-2.5">
                       <CheckCircle2
@@ -189,8 +187,8 @@ export default async function HomePage() {
                     Primii pași
                   </div>
                   <p className="mt-2 text-sm leading-relaxed text-muted">
-                    Intri, citești regulile, pui o întrebare . Primești
-                    răspunsuri, simplu si rapid.
+                    Intri, citești regulile, pui o întrebare. Primești
+                    răspunsuri, simplu și rapid.
                   </p>
                 </div>
 

@@ -10,7 +10,7 @@ export function Section({ className, tone = "default", children, ...props }: Sec
   return (
     <section
       className={cn(
-        "relative py-20 sm:py-24 lg:py-32",
+        "relative py-16 sm:py-20 lg:py-24",
         /* Clear top-border separator between every section */
         "border-t border-border/30",
         /* Subtle – very slightly lighter background for alternation */

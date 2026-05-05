@@ -116,7 +116,9 @@ export default async function HomePage() {
                   Comunitatea QA din România
                 </span>
                 <span className="sr-only"> - </span>
-                <span className="text-gradient mt-1 block">BugHunter</span>
+                <span className="text-gradient mt-1 block leading-[1.15] pb-2">
+                  BugHunter
+                </span>
               </h1>
 
               <p className="mt-7 max-w-lg text-lg leading-relaxed text-muted">

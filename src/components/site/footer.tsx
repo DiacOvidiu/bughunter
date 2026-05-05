@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { MessageSquare } from "lucide-react";
+import { Bug, MessageSquare } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
+import { FooterNavLink } from "@/components/site/footer-nav-link";
 import { ButtonLink } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site";
 
@@ -16,12 +17,16 @@ export function SiteFooter() {
       <Container className="grid gap-12 lg:grid-cols-[1.6fr_1fr_1fr]">
         {/* Brand */}
         <div className="max-w-sm">
-          <div className="flex items-center gap-2.5 font-bold tracking-tight">
-            <span className="grid size-8 place-items-center rounded-xl bg-linear-to-br from-indigo-600 to-violet-600 shadow-[0_0_14px_rgba(99,102,241,0.5)] text-white text-xs font-bold">
-              B
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2.5 rounded-xl font-bold tracking-tight transition-opacity hover:opacity-90"
+            aria-label={`${siteConfig.name} — Acasă`}
+          >
+            <span className="grid size-8 place-items-center rounded-xl bg-linear-to-br from-indigo-600 to-violet-600 shadow-[0_0_14px_rgba(99,102,241,0.5)]">
+              <Bug className="size-4 text-white" aria-hidden />
             </span>
             {siteConfig.name}
-          </div>
+          </Link>
           <p className="mt-4 text-sm leading-relaxed text-muted">
             Comunitate de testeri din România — manual testing, automation, API
             și performance. Discuții tehnice, resurse practice și suport pentru
@@ -48,12 +53,12 @@ export function SiteFooter() {
           <ul className="mt-5 grid gap-2.5">
             {links.map((l) => (
               <li key={l.href}>
-                <Link
+                <FooterNavLink
                   href={l.href}
                   className="text-sm text-muted transition-colors hover:text-foreground"
                 >
                   {l.label}
-                </Link>
+                </FooterNavLink>
               </li>
             ))}
           </ul>
@@ -64,7 +69,7 @@ export function SiteFooter() {
           <div className="mt-5 flex flex-wrap gap-2"></div>
           <div className="mt-8 text-xs leading-relaxed text-muted-2">
             <p>
-              © {new Date().getFullYear()} {siteConfig.name}.
+              © {new Date().getFullYear()} {siteConfig.name}
               <br />
               Toate drepturile rezervate.
             </p>

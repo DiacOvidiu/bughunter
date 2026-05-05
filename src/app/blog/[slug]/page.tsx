@@ -180,6 +180,30 @@ export default async function BlogPostPage({
                 </ButtonLink>
               </div>
 
+              {/* Mobile-only TOC (collapsed by default) */}
+              {post.toc.length ? (
+                <details className="mt-8 rounded-2xl bg-card p-5 ring-1 ring-border lg:hidden">
+                  <summary className="flex cursor-pointer items-center justify-between text-sm font-semibold tracking-tight">
+                    Cuprins
+                    <span className="text-xs font-normal text-muted-2">
+                      {post.toc.length} secțiuni
+                    </span>
+                  </summary>
+                  <ol className="mt-4 grid gap-2 text-sm text-muted">
+                    {post.toc.map((t) => (
+                      <li
+                        key={t.id}
+                        className={t.level === 3 ? "pl-3" : undefined}
+                      >
+                        <a className="hover:text-foreground" href={`#${t.id}`}>
+                          {t.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ol>
+                </details>
+              ) : null}
+
               <Prose className="mt-10">
                 {hasStructured ? (
                   <>
@@ -359,7 +383,7 @@ export default async function BlogPostPage({
                 </div>
               ) : null}
               {post.toc.length ? (
-                <div className="rounded-2xl bg-card p-7 ring-1 ring-border shadow-(--shadow)">
+                <div className="hidden lg:block rounded-2xl bg-card p-7 ring-1 ring-border shadow-(--shadow)">
                   <div className="text-sm font-semibold tracking-tight">
                     Cuprins
                   </div>

@@ -91,6 +91,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Account for sticky header (~60-65px) when scrolling to anchor IDs */
+  scroll-padding-top: 5.5rem;
   text-rendering: geometricPrecision;
   overflow-x: hidden;
 }

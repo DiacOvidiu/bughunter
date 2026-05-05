@@ -12,7 +12,7 @@ export function DiscordCTABlock({
   description?: string;
 }) {
   return (
-    <section className="relative border-t border-border/30 py-16 sm:py-20 lg:py-24">
+    <section className="relative border-t border-border/30 py-10 sm:py-16 lg:py-24">
       <Container className="max-w-7xl">
         {/* Card */}
         <div className="relative overflow-hidden rounded-3xl p-10 sm:p-14 lg:p-16">
